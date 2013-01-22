@@ -1,6 +1,8 @@
 package com.cs408.forbes.chris.analysis.classes;
 import java.io.File;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 /**
  * 
@@ -27,7 +29,8 @@ public class Basic_frequency_Analysis {
 		}
 	}
 	
-	private void prse_fle(File f){
+	private void prse_fle(File fle) throws FileNotFoundException{
+		BufferedReader buf_rdr = new BufferedReader(new FileReader(fle));
 		
 	}
 	
