@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.cs408.forbes.chris.global.comms.Logfiles;
+
 /**
  * 
  * @author cforbes2013 <christopher.forbes@strath.ac.uk> Basic Word counter
@@ -28,8 +30,9 @@ public class Basic_frequency_Analysis {
 		for(int i = 0; i < blk_lst.size(); i++){
 			System.out.println("Blklist word : " + blk_lst.get(i).getWord_() + " Number of occurences: " + blk_lst.get(i).getCounted_() );
 		}
+		Logfiles.createLogs(blk_lst);
 	}
-
+	
 	/**
 	 * Private pass file -> make sure you pass an active directory
 	 * 
@@ -64,6 +67,13 @@ public class Basic_frequency_Analysis {
 
 	}
 
+	/**
+	 * Private parse method for basic frequency analysis reads each line individually splitting them over the " " space character
+	 * 	from their the word counter is incrememnted and each word is searched against the blacklist if they are equal then one is added to
+	 * it's count.
+	 * @param fle
+	 * @throws IOException
+	 */
 	private void prse_fle(File fle) throws IOException {
 		BufferedReader buf_rdr = new BufferedReader(new FileReader(fle));
 		int fle_wrd_cnter = 0;
@@ -117,6 +127,10 @@ public class Basic_frequency_Analysis {
 
 	}
 	
+	/**
+	 * Private method for basic frequency searches the given param against the blacklist to check for existence and increment the counter
+	 * @param wrd_
+	 */
 	private void srch_wrd(String wrd_){
 		for(int i = 0; i < blk_lst.size(); i++){
 			if(wrd_.compareToIgnoreCase(blk_lst.get(i).getWord_()) == 0)
