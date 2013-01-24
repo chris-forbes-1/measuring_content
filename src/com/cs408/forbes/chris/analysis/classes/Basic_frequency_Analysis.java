@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Basic_frequency_Analysis {
 	File [] dir_lst; 
 	String vctm, perp;
+	int fck_cntr= 0;
 	ArrayList<Integer> cnter = new ArrayList<Integer>();
 	public Basic_frequency_Analysis(String fl_dir, String vctm, String perp) throws FileNotFoundException{
 		this.vctm = vctm;
@@ -34,7 +35,7 @@ public class Basic_frequency_Analysis {
 		prse_fle(fle);	
 		}
 		for(int i = 0; i < dir_lst.length; i++){
-			System.out.println("File Name: " + dir_lst[i].getName() + "\n");
+			System.out.println("File Name: " + dir_lst[i].getName());
 			System.out.println("\t Word Count : "+ cnter.get(i) +" ");
 		}
 		int total = 0;
@@ -46,6 +47,9 @@ public class Basic_frequency_Analysis {
 		
 		int avrg_wrd_lngth = total / fl_dir.length();
 		System.out.println("Average length of documents " + avrg_wrd_lngth );
+		System.out.println("Assuming most chatlogs on perverted-justic are similar to the average word count");
+		System.out.println("We can assume that their is approx. " + avrg_wrd_lngth * 549 + " words in the dataset");
+		System.out.println("\n\n Fuck counter: " + fck_cntr);
 		
 	}
 	
@@ -64,7 +68,13 @@ public class Basic_frequency_Analysis {
 					String [] words = lne.split("\\s+");
 					for(String s : words){
 						fle_wrd_cnter ++;
+						if(s.toLowerCase().compareTo("fuck")==0 || s.toLowerCase().compareTo("fuk")==0)
+						{
+							fck_cntr ++;
+						}
 					}
+					
+					
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
