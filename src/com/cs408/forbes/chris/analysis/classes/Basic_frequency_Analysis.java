@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import com.cs408.forbes.chris.global.comms.Logfiles;
 
 /**
- * 
+ * The most simple analysis this package will offer, a simple word counter looking at the  
+ * the amount of words in the file for reference, and then comparing to the "wordlist.txt" a very
+ * small black list
  * @author cforbes2013 <christopher.forbes@strath.ac.uk> Basic Word counter
  */
 @SuppressWarnings("unused")

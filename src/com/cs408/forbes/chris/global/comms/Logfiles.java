@@ -1,9 +1,7 @@
 package com.cs408.forbes.chris.global.comms;
 
 import com.cs408.forbes.chris.analysis.classes.Analysed_words;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
