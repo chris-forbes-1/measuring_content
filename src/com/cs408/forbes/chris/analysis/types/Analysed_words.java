@@ -1,4 +1,4 @@
-package com.cs408.forbes.chris.analysis.classes;
+package com.cs408.forbes.chris.analysis.types;
 
 public class Analysed_words {
 

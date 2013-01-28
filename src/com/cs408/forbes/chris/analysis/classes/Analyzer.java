@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.cs408.forbes.chris.analysis.interfaces.Textual_Analysis;
+import com.cs408.forbes.chris.analysis.types.Analysed_words;
 /**
  * Analyzer class implementing the Textual_Analysis interface,
  * namely just a simple counter algorithm 

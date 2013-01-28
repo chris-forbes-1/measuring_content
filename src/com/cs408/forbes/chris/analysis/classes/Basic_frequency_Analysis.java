@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.global.comms.Logfiles;
 
 /**
@@ -14,6 +15,8 @@ import com.cs408.forbes.chris.global.comms.Logfiles;
  * the amount of words in the file for reference, and then comparing to the "wordlist.txt" a very
  * small black list
  * @author cforbes2013 <christopher.forbes@strath.ac.uk> Basic Word counter
+ * References: Stackoverflow
+ * 	terms:	creating files to write
  */
 @SuppressWarnings("unused")
 public class Basic_frequency_Analysis {

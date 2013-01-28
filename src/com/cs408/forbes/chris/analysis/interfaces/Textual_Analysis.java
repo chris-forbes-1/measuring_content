@@ -1,7 +1,7 @@
 package com.cs408.forbes.chris.analysis.interfaces;
 import java.util.ArrayList;
 
-import com.cs408.forbes.chris.analysis.classes.Analysed_words;
+import com.cs408.forbes.chris.analysis.types.Analysed_words;
 /**
  * Interface for Textual Analysis back end.
  * Simply a parsing word counter
