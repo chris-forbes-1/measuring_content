@@ -65,7 +65,6 @@ public class Basic_frequency_Analysis {
 				.println("Assuming most chatlogs on perverted-justic are similar to the average word count");
 		System.out.println("We can assume that their is approx. "
 				+ avrg_wrd_lngth * 549 + " words in the dataset");
-		System.out.println("\n\n Fuck counter: " + fck_cntr);
 
 	}
 

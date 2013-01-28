@@ -15,13 +15,19 @@ import java.util.Date;
  * Global comms class, used for writing log files (allows the data to be automatically exported after analysis.
  *
  */
+@SuppressWarnings("unused")
 public class Logfiles {
 	
 		public static void createLogs(ArrayList<Analysed_words> x) throws IOException{
 			DateFormat dtFt = new SimpleDateFormat("HH:mm:ss");
 			Date date = new Date();
 			System.out.println(dtFt.format(date));
-			String fle_nme = "contentLogs/" + dtFt.format(date).toString() + ".txt";
+			String fle_nme = "contentLogs/" + dtFt.format(date).toString();
+			dtFt = new SimpleDateFormat("dd-mm-yy");
+			String cur_dt = dtFt.format(date).toString();
+			cur_dt += ".txt";
+			System.out.println(cur_dt);
+			fle_nme += " " + cur_dt;
 			System.out.println("File name: " + fle_nme);
 			File f = new File(fle_nme);
 			f.createNewFile();
