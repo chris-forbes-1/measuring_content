@@ -23,10 +23,9 @@ public class Basic_frequency_Analysis {
 	ArrayList<Analysed_words> blk_lst = new ArrayList<Analysed_words>();
 	ArrayList<Integer> cnter = new ArrayList<Integer>();
 
-	public Basic_frequency_Analysis(String fl_dir, String vctm, String perp)
+	public Basic_frequency_Analysis(String fl_dir)
 			throws IOException {
-		this.vctm = vctm;
-		this.perp = perp;
+		
 		ld_wrd_lst();
 		prse_dir(fl_dir);
 		for(int i = 0; i < blk_lst.size(); i++){
@@ -81,12 +80,7 @@ public class Basic_frequency_Analysis {
 		String lne;
 		try {
 			while ((lne = buf_rdr.readLine()) != null) {
-				// if(lne.startsWith(vctm))
-				// {
-				// lne = lne.substring(0, vctm.length()-1);
-				// }else if(lne.startsWith(perp)){
-				// lne = lne.substring(0, perp.length()-1);
-				// }
+
 				String[] words = lne.split(" ");
 				for (String s : words) {
 					if (s != " ") {
