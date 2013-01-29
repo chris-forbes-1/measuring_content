@@ -6,13 +6,10 @@ package com.cs408.forbes.chris.analysis.classes;
  * allowing the parsing and comparisons of all combinations of the line
  */
 public class Multi_word_frequency_analysis {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	
+	public Multi_word_frequency_analysis(String fp)
+	{
+		
 	}
 
 }

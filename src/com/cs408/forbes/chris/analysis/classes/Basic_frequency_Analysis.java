@@ -13,7 +13,8 @@ import com.cs408.forbes.chris.global.comms.Logfiles;
  * The most simple analysis this package will offer, a simple word counter looking at the  
  * the amount of words in the file for reference, and then comparing to the "wordlist.txt" a very
  * small black list
- * @author cforbes2013 <christopher.forbes@strath.ac.uk> Basic Word counter
+ * @author cforbes2013 <christopher.forbes@strath.ac.uk>
+ *  Basic Word counter
  * References: Stackoverflow
  * 	terms:	creating files to write
  */
@@ -87,7 +88,7 @@ public class Basic_frequency_Analysis {
 				for (String s : words) {
 					if (s != " ") {
 						fle_wrd_cnter++;
-						System.out.println("Line: " + s);
+						
 						srch_wrd(s);
 					}
 				}
