@@ -1,9 +1,11 @@
 package com.cs408.forbes.chris.application.tests;
 
+import java.awt.List;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.File;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
+import com.cs408.forbes.chris.global.comms.TearDown;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 
 @SuppressWarnings("unused")
@@ -20,13 +22,26 @@ public class Basic_analyser_test_application {
 //			e.printStackTrace();
 //		}
 		
+		File f = new File("chatlogs/");
+		File[] d = f.listFiles();
 		try {
-			UserNameRemoval.rmv_usr_nme(new File("chatlogs/DavieWants2.txt"));
+			for(int i = 0; i < d.length; i++)
+			{
+				UserNameRemoval.rmv_usr_nme(d[i]);
+				System.out.println("new file");
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		try {
+			Basic_frequency_Analysis bfa = new Basic_frequency_Analysis("tempFiles/");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		TearDown.tearDown();
 	}
 
 }

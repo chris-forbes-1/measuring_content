@@ -16,10 +16,17 @@ import java.util.Date;
  * Global comms class, used for writing log files (allows the data to be automatically exported after analysis.
  *
  */
-@SuppressWarnings("unused")
+
 public class Logfiles {
 	
-		public static void createLogs(ArrayList<Analysed_words> x) throws IOException{
+	
+	/**
+	 * Global output function for writing analysis logs, this may be changed over time
+	 * to allow some wider functionality however it must ALWAYS be passed and @see ArrayList of analysed_words
+	 * @param AnalysedWordList
+	 * @throws IOException
+	 */
+		public static void createLogs(ArrayList<Analysed_words> AnalysedWordList) throws IOException{
 			DateFormat dtFt = new SimpleDateFormat("HH:mm:ss");
 			Date date = new Date();
 			System.out.println(dtFt.format(date));
@@ -33,9 +40,9 @@ public class Logfiles {
 			File f = new File(fle_nme);
 			f.createNewFile();
 			  PrintWriter wrt = new PrintWriter(fle_nme, "UTF-8");
-			  for(int i = 0; i < x.size(); i++)
+			  for(int i = 0; i < AnalysedWordList.size(); i++)
 			  {
-				  String lne = "Black List word : " + x.get(i).getWord_() + " Total word count : " + x.get(i).getCounted_();
+				  String lne = "Black List word : " + AnalysedWordList.get(i).getWord_() + " Total word count : " + AnalysedWordList.get(i).getCounted_();
 				wrt.println(lne);
 			  }
 			  
