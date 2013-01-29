@@ -13,6 +13,9 @@ public class Basic_analyser_test_application {
 	
 	
 	public static void main(String[] args){
+		/**
+		 * Old Test code for initial implementation of the basic frequency analysis
+		 */
 //		String x = " ", y = " ";
 //		try {
 //			System.out.println("Inititialsing the analysis..");
@@ -21,6 +24,10 @@ public class Basic_analyser_test_application {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+		/**
+		 *old test
+		 */
 		
 		File f = new File("chatlogs/");
 		File[] d = f.listFiles();
