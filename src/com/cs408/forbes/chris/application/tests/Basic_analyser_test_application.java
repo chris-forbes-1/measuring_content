@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.File;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
+import com.cs408.forbes.chris.analysis.classes.Multi_word_frequency_analysis;
 import com.cs408.forbes.chris.global.comms.TearDown;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 
@@ -43,7 +44,8 @@ public class Basic_analyser_test_application {
 			e.printStackTrace();
 		}
 		try {
-			Basic_frequency_Analysis bfa = new Basic_frequency_Analysis("tempFiles/");
+	//		Basic_frequency_Analysis bfa = new Basic_frequency_Analysis("tempFiles/"); old test
+			Multi_word_frequency_analysis mwfa = new Multi_word_frequency_analysis("tempFiles/");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -20,7 +20,7 @@ public class Analyzer implements Textual_Analysis {
 	@Override
 	public ArrayList<Analysed_words> Analyze(String fileDir) {
 		awl = new ArrayList<Analysed_words>();
-		File file_Dir = new File(fileDir);
+		
 		
 		return null;
 	}

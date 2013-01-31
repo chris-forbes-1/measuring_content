@@ -61,7 +61,7 @@ public class Basic_frequency_Analysis {
 		System.out.println("Total word counter for " + dir_lst.length
 				+ " files is " + total);
 
-		int average_word_length = total / file_Directory.length();
+		int average_word_length = total / file_Directory .length();
 		System.out.println("Average length of documents " + average_word_length);
 		System.out
 				.println("Assuming most chatlogs on perverted-justic are similar to the average word count");
@@ -102,8 +102,7 @@ public class Basic_frequency_Analysis {
 		counter.add(fle_wrd_cnter);
 		System.out.println("total word count for file " + fle.getName() + " is " +fle_wrd_cnter);
 		System.out.println("Total Word count / black listed words normalisation ratio : "+ calculate_ratio(fle_wrd_cnter, totalBLwords) + "%");
-		//Logfiles.addData(Float.toString(calculate_ratio(fle_wrd_cnter, fck_cntr)));
-		//TODO Implement the class frequencyratio for working ratio output
+		
 		buf_rdr.close();
 
 	}
