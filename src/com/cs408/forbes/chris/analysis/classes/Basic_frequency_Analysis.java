@@ -20,21 +20,23 @@ import com.cs408.forbes.chris.global.comms.Logfiles;
  */
 
 public class Basic_frequency_Analysis {
-	File[] dir_lst;
-	String vctm, perp;
+	private static File[] dir_lst;
+	static String fp = " ";
 	int fck_cntr = 0;
-	ArrayList<Analysed_words> blk_lst = new ArrayList<Analysed_words>();
-	ArrayList<Integer> counter = new ArrayList<Integer>();
+	private static ArrayList<Analysed_words> blk_lst = new ArrayList<Analysed_words>();
+	static ArrayList<Integer> counter = new ArrayList<Integer>();
 
 	public Basic_frequency_Analysis(String fl_dir)
 			throws IOException {
+		fp = fl_dir;
 		
+		
+	}
+	public ArrayList<Analysed_words> analyse () throws IOException{
 		ld_wrd_lst();
-		Parse_directory(fl_dir);
-		for(int i = 0; i < blk_lst.size(); i++){
-			System.out.println("Blklist word : " + blk_lst.get(i).getWord_() + " Number of occurences: " + blk_lst.get(i).getCounted_() );
-		}
+		Parse_directory(fp);
 		Logfiles.createLogs(blk_lst);
+		return blk_lst;
 	}
 	
 	/**
@@ -43,7 +45,7 @@ public class Basic_frequency_Analysis {
 	 * @param file_Directory
 	 * @throws IOException
 	 */
-	private void Parse_directory(String file_Directory) throws IOException {
+	private static void Parse_directory(String file_Directory) throws IOException {
 		File fl_dir_ = new File(file_Directory);
 		dir_lst = fl_dir_.listFiles();
 
@@ -77,7 +79,7 @@ public class Basic_frequency_Analysis {
 	 * @param fle
 	 * @throws IOException
 	 */
-	private void parse_file(File fle) throws IOException {
+	private static void parse_file(File fle) throws IOException {
 		BufferedReader buf_rdr = new BufferedReader(new FileReader(fle));
 		int fle_wrd_cnter = 0;
 		String lne;
@@ -115,7 +117,7 @@ public class Basic_frequency_Analysis {
 	 * @param word
 	 * @throws IOException
 	 */
-	private void ld_wrd_lst() throws IOException {
+	private static void ld_wrd_lst() throws IOException {
 		@SuppressWarnings("resource")
 		BufferedReader bfrdr = new BufferedReader(new FileReader(
 				"WordList/wordlist.txt"));
@@ -134,7 +136,7 @@ public class Basic_frequency_Analysis {
 	 * @param wrd_
 	 * @return blwrd
 	 */
-	private int srch_wrd(String wrd_){
+	private static int srch_wrd(String wrd_){
 		int blwrd = 0;
 		for(int i = 0; i < blk_lst.size(); i++){
 			if(wrd_.compareToIgnoreCase(blk_lst.get(i).getWord_()) == 0)
@@ -153,7 +155,7 @@ public class Basic_frequency_Analysis {
 	 * @param totalBLwords
 	 * @return
 	 */
-	private float calculate_ratio(int totalWords, float totalBLwords){
+	private static  float calculate_ratio(int totalWords, float totalBLwords){
 			float ration = totalBLwords / totalWords;
 			ration *=100;
 			return ration;

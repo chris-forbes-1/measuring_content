@@ -4,8 +4,11 @@ import java.awt.List;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.File;
+import java.util.ArrayList;
+
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
 import com.cs408.forbes.chris.analysis.classes.Multi_word_frequency_analysis;
+import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.global.comms.TearDown;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 
@@ -44,8 +47,22 @@ public class Basic_analyser_test_application {
 			e.printStackTrace();
 		}
 		try {
-	//		Basic_frequency_Analysis bfa = new Basic_frequency_Analysis("tempFiles/"); old test
+			Basic_frequency_Analysis bfa = new Basic_frequency_Analysis("tempFiles/"); //old test
 			Multi_word_frequency_analysis mwfa = new Multi_word_frequency_analysis("tempFiles/");
+			ArrayList<Analysed_words> aw = mwfa.analyse();
+			ArrayList<Analysed_words> awsf = bfa.analyse();
+			System.out.println("test return analysed MFWA: ");
+			for(Analysed_words aws : aw)
+			{
+				System.out.println("MW W:" + aws.getWord_());
+				System.out.println("MW C:"+ aws.getCounted_());
+			}
+			System.out.println("test Return BFS: ");
+			for(Analysed_words aws : awsf)
+			{
+				System.out.println("MW W:" + aws.getWord_());
+				System.out.println("MW C:"+ aws.getCounted_());
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
