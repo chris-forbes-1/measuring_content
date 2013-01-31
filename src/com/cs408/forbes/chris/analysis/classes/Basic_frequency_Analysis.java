@@ -72,7 +72,7 @@ public class Basic_frequency_Analysis {
 
 	/**
 	 * Private parse method for basic frequency analysis reads each line individually splitting them over the " " space character
-	 * 	from their the word counter is incrememnted and each word is searched against the blacklist if they are equal then one is added to
+	 * 	from their the word counter is incremented and each word is searched against the blacklist if they are equal then one is added to
 	 * it's count.
 	 * @param fle
 	 * @throws IOException
@@ -81,6 +81,7 @@ public class Basic_frequency_Analysis {
 		BufferedReader buf_rdr = new BufferedReader(new FileReader(fle));
 		int fle_wrd_cnter = 0;
 		String lne;
+		float totalBLwords = 0.0F;
 		try {
 			while ((lne = buf_rdr.readLine()) != null) {
 
@@ -89,7 +90,7 @@ public class Basic_frequency_Analysis {
 					if (s != " ") {
 						fle_wrd_cnter++;
 						
-						srch_wrd(s);
+						totalBLwords+=srch_wrd(s);
 					}
 				}
 
@@ -99,6 +100,10 @@ public class Basic_frequency_Analysis {
 			e.printStackTrace();
 		}
 		counter.add(fle_wrd_cnter);
+		System.out.println("total word count for file " + fle.getName() + " is " +fle_wrd_cnter);
+		System.out.println("Total Word count / black listed words normalisation ratio : "+ calculate_ratio(fle_wrd_cnter, totalBLwords) + "%");
+		//Logfiles.addData(Float.toString(calculate_ratio(fle_wrd_cnter, fck_cntr)));
+		//TODO Implement the class frequencyratio for working ratio output
 		buf_rdr.close();
 
 	}
@@ -128,13 +133,30 @@ public class Basic_frequency_Analysis {
 	/**
 	 * Private method for basic frequency searches the given param against the blacklist to check for existence and increment the counter
 	 * @param wrd_
+	 * @return blwrd
 	 */
-	private void srch_wrd(String wrd_){
+	private int srch_wrd(String wrd_){
+		int blwrd = 0;
 		for(int i = 0; i < blk_lst.size(); i++){
 			if(wrd_.compareToIgnoreCase(blk_lst.get(i).getWord_()) == 0)
 			{
 				blk_lst.get(i).setCounted_(blk_lst.get(i).getCounted_() + 1);
+				blwrd+=1;
 			}
 		}
+		return blwrd;
+	}
+	/**
+	 * Private method used to calculate what ratio of the text is using words on the black list,
+	 * simply this runs on single words not idioms and as such cannot give a full view of each chat logs 
+	 * however it is an inital implementation, i may multply the number slightly as it is very low at the moment 
+	 * @param totalWords
+	 * @param totalBLwords
+	 * @return
+	 */
+	private float calculate_ratio(int totalWords, float totalBLwords){
+			float ration = totalBLwords / totalWords;
+			ration *=100;
+			return ration;
 	}
 }
