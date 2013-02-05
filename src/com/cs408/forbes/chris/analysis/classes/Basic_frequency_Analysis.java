@@ -103,7 +103,7 @@ public class Basic_frequency_Analysis {
 		}
 		counter.add(fle_wrd_cnter);
 		System.out.println("total word count for file " + fle.getName() + " is " +fle_wrd_cnter);
-		System.out.println("Total Word count / black listed words normalisation ratio : "+ calculate_ratio(fle_wrd_cnter, totalBLwords) + "%");
+		System.out.println("KeyWord Density : "+ calculate_ratio(fle_wrd_cnter, totalBLwords) + "%");
 		
 		buf_rdr.close();
 
