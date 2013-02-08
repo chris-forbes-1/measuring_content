@@ -2,27 +2,36 @@ package com.cs408.forbes.chris.global.comms;
 
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import java.util.ArrayList;
-import java.util.HashMap;
 
+/**
+ * 
+ * @author cforbes2013 <christopher.forbes@strath.ac.uk>
+ *Global comms class for merging lists of single and multi-term clusters
+ */
 public class Analysis_control {
 
-		public static void Combine_lists(ArrayList<Analysed_words> Multi_word, ArrayList<Analysed_words> single_word, HashMap<String,Integer> file_info)
+	/**
+	 * Static class pass 2 Arraylists with contents Analysed_words and it will combine them
+	 * @param Multi_word
+	 * @param single_word
+	 * @return
+	 */
+		public static ArrayList<Analysed_words> Combine_lists(ArrayList<Analysed_words> Multi_word, ArrayList<Analysed_words> single_word)
 		{
 			
-			for(int idx = 0; idx < Multi_word.size(); idx ++)
+			for(int i = 0; i < Multi_word.size(); i++)
 			{
-				if(Multi_word.get(idx).getCounted_() != single_word.get(idx).getCounted_())
+				if(Multi_word.get(i).getCounted_() == 0 && single_word.get(i).getCounted_()!= 0)
 				{
-					int x = single_word.get(idx).getCounted_();
-					int y = Multi_word.get(idx).getCounted_();
-					Multi_word.get(idx).setCounted_(x + y);
+					Multi_word.set(i, single_word.get(i));
+				}else if(Multi_word.get(i).getCounted_() != 0 && single_word.get(i).getCounted_() != 0 )
+				{
+					int x = Multi_word.get(i).getCounted_();
+					int y = single_word.get(i).getCounted_() + x;
+					Multi_word.get(i).setCounted_(y);
 				}
 			}
-			for(int idx = 0 ; idx < Multi_word.size(); idx ++)
-			{
-				System.out.println("Combined Lists:");
-				System.out.println("Word: " + Multi_word.get(idx).getWord_() + " Count : " + Multi_word.get(idx).getCounted_() );
-			}
+			return Multi_word;
 		}
 
 }

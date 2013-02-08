@@ -33,7 +33,10 @@ public class Basic_frequency_Analysis {
 		
 	}
 	public ArrayList<Analysed_words> analyse () throws IOException{
+		System.out.println("Beginning Basic_frequency analysis \n please wait...");
+		System.out.println("Loading blacklist");
 		ld_wrd_lst();
+		System.out.println("Beginning analysis");
 		Parse_directory(fp);
 		Logfiles.createLogs(blk_lst);
 		return blk_lst;
@@ -156,8 +159,8 @@ public class Basic_frequency_Analysis {
 	 * @return
 	 */
 	private static  float calculate_ratio(int totalWords, float totalBLwords){
-			float ration = totalBLwords / totalWords;
-			ration *=100;
-			return ration;
+		float ration = totalBLwords / totalWords;
+		ration *=100;
+		return ration;
 	}
 }
