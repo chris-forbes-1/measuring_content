@@ -78,6 +78,8 @@ public class Basic_analyser_test_application {
 //			e.printStackTrace();
 //		}
 //		TearDown.tearDown();
+		
+		
 		try{
 		NgramGenerator.generateNgrams("WordList/wordlist.txt");
 		}catch(IOException IOE){
