@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * and moving everything up one place.
  *
  */
-@SuppressWarnings("unused")
+
 public class NgramGenerator {
 
 	public static boolean generateNgrams(String fp) throws IOException
@@ -44,17 +44,22 @@ public class NgramGenerator {
 		}
 		//stage 2 remove element 1 and move back the way (this will iterate while nGram.size!=1
 		nGram.remove(0);
-		ArrayList<String> tmp = new ArrayList<String>();
-		for(int i = 0 ; i < nGram.size(); i++)
+		
+		// simply removing creates the appropriate size so all i have to do is merge the smaller list with the bigger list
+		//then i will most likely being a multi-level recursive win to generate the remaining
+		//nGram > x
+		
+		for(int i = 0; i < nGram.size(); i++)
 		{
-			String tm = x.get(i) + " " + nGram.get(i);
-			System.out.println("tm : " + tm);
-			nGram.add(i, tm); //replace i with new ngram;
+			String tmp = x.get(i) + " " + nGram.get(i); //get i'th from x and merge with ngram [i'th]  
+			//replace ith' x element with tmp
+			x.set(i, tmp);
 		}
-		for(String s : nGram)
+		for(String s: x)
 		{
 			System.out.println(s);
 		}
+		
 	}
 
 }
