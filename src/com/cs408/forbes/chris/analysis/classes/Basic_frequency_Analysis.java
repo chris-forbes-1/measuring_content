@@ -121,13 +121,14 @@ public class Basic_frequency_Analysis {
 	 * @throws IOException
 	 */
 	private static void ld_wrd_lst() throws IOException {
-		@SuppressWarnings("resource")
+		
 		BufferedReader bfrdr = new BufferedReader(new FileReader(
 				"WordList/wordlist.txt"));
 		String lne;
 		while ((lne = bfrdr.readLine()) != null) {
 			blk_lst.add(new Analysed_words(lne));
 		}
+		bfrdr.close();
 //		for (Analysed_words aw : blk_lst) {
 //			System.out.println("black list: " + aw.getWord_());
 //		}
