@@ -1,5 +1,5 @@
 package com.cs408.forbes.chris.global.comms;
-
+//TODO Generate NGrams properly
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -45,7 +45,7 @@ public class NgramGenerator {
 		// force JVM to do full garbage collection prior to heavy lifting
 		System.gc();
 		// generate 2nd
-		Stage2GenerateNgram();
+		Stage2GenerateNgram(); 
 		return true;
 	}
 
@@ -122,5 +122,32 @@ public class NgramGenerator {
 		pr.close();
 
 	}
+	
+	
 
 }
+
+
+/*	****Ideas Area****
+ * The Black list is already in memory
+ * Imagine the list 
+ * a b c
+ * all ngrams for the list are 
+ * aa
+ * ab
+ * ac
+ * ba
+ * bb
+ * bc
+ * ca
+ * cb
+ * cc
+ * in order to create the list we will read A from the file assuming we already have ABC in memory
+ * the process subsequently would be
+ * parse line 1 (a)
+ * ~attach a from memory
+ * write aa to file 
+ */
+
+
+
