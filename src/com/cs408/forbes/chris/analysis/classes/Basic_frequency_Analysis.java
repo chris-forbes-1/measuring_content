@@ -29,8 +29,9 @@ public class Basic_frequency_Analysis {
 	public Basic_frequency_Analysis(String fl_dir)
 			throws IOException {
 		fp = fl_dir;
-		
-		
+	}
+	public Basic_frequency_Analysis(){
+		fp = "tempFiles/";
 	}
 	public ArrayList<Analysed_words> analyse () throws IOException{
 		System.out.println("Beginning Basic_frequency analysis \n please wait...");
