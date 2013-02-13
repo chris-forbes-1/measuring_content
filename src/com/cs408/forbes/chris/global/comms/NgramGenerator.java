@@ -2,6 +2,7 @@ package com.cs408.forbes.chris.global.comms;
 //TODO Generate NGrams properly
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,12 +41,14 @@ public class NgramGenerator {
 		lne = null;
 		System.out.println("Black list parsed");
 		System.out.println("Launching ngram generation");
-		// generate the first temp file parse and create 1st ngram set
-		Stage1generateNgram();
-		// force JVM to do full garbage collection prior to heavy lifting
 		System.gc();
-		// generate 2nd
-		Stage2GenerateNgram(); 
+		ExperimentalGeneration();
+		// generate the first temp file parse and create 1st ngram set
+//		Stage1generateNgram();
+//		// force JVM to do full garbage collection prior to heavy lifting
+//		System.gc();
+//		// generate 2nd
+//		Stage2GenerateNgram(); 
 		return true;
 	}
 
@@ -123,7 +126,35 @@ public class NgramGenerator {
 
 	}
 	
-	
+	private static void ExperimentalGeneration() throws IOException{
+		PrintWriter pr = new PrintWriter(new File("tempFiles/ngramExpeimental.txt"));
+		BufferedReader br = new BufferedReader(new FileReader(new File("tempFiles/ngramExpeimental.txt")));
+		//ArrayList<String> NGL = new ArrayList<String>();
+		for(int y = 0; y < BLKLST.size();y++) //control col1
+			{
+				for(int z = 0; z < BLKLST.size();z++) //control line addition
+				{
+					pr.write(BLKLST.get(y)+" "+BLKLST.get(z)+"\n");
+					
+				}
+			}
+//		System.out.println("Performing enforced Garbage Collection");
+//			//Move onto parsing adding then writing
+//		String lne = "";
+//		for(int x = 0; x < BLKLST.size();x++){
+//		while((lne = br.readLine())!= null)
+//		{
+//			for(int i = 0; i < BLKLST.size(); i++)
+//			{
+//				pr.write(lne + " " + BLKLST.get(i) + "\n");
+//			}
+//		}
+//		}
+			
+		
+		pr.close();
+		br.close();
+	}
 
 }
 
