@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
+import com.cs408.forbes.chris.global.comms.NgramGenerator;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 import com.cs408.forbes.chris.global.comms.TearDown;
 public class basicAnalysis {
@@ -38,6 +39,22 @@ public class basicAnalysis {
 	break;
 	default: DefaultRemoval();
 	}
+	System.out.println("Do you want to generate Ngrams of the dataset? \n (y/n)");
+
+	param = sc.next();
+	switch(param)
+	{
+	case "y":try {
+			NgramGenerator.generateNgrams("WordList/wordlist.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case "n" : ;
+	break;
+	default: ;
+	}
 	
 	
 	
@@ -64,7 +81,8 @@ public class basicAnalysis {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		TearDown.tearDown();
+		//TODO Remove for final
+		//TearDown.tearDown();
 		
 	}
 
