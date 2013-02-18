@@ -82,7 +82,7 @@ public class basicAnalysis {
 			e.printStackTrace();
 		}
 		//TODO Remove for final
-		TearDown.tearDown();
+		//TearDown.tearDown();
 		
 	}
 
