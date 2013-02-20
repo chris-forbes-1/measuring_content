@@ -72,21 +72,21 @@ public class basicAnalysis {
 		e.printStackTrace();
 	}
 	
-	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
-	
-	try {
-		Multi_word_frequency_analysis mwfa = new Multi_word_frequency_analysis("tempFiles/");
-		ArrayList<Analysed_words> mwfa_a = mwfa.analyse();
-		for(Analysed_words A : mwfa_a)
-		{
-			System.out.println(A.getWord_() + " " + A.getCounted_());
-		}
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	System.out.println("Multi-word term complete");
-	
+//	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
+//	
+//	try {
+//		Multi_word_frequency_analysis mwfa = new Multi_word_frequency_analysis("tempFiles/");
+//		ArrayList<Analysed_words> mwfa_a = mwfa.analyse();
+//		for(Analysed_words A : mwfa_a)
+//		{
+//			System.out.println(A.getWord_() + " " + A.getCounted_());
+//		}
+//	} catch (IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	System.out.println("Multi-word term complete");
+	TearDown.tearDown();
 	}
 	
 	private static void DefaultRemoval() {
