@@ -41,7 +41,9 @@ public class NgramGenerator {
 		System.out.println("Black list parsed");
 		System.out.println("Launching ngram generation");
 		System.gc();
+		gen_2();
 		ExperimentalGeneration();
+		
 		return true;
 	}
 private static void ld_wrd_lst() throws IOException {
@@ -64,9 +66,7 @@ private static void ld_wrd_lst() throws IOException {
 	private static void ExperimentalGeneration() throws IOException {
 		File Dest = new File("tempFiles/Dest.txt");
 		PR = new PrintWriter(Dest,"UTF-8");
-		for (String s : BLKLST) {
-			PR.write(s);
-		}
+		PR.write("\n");
 		gen();
 	}
 
@@ -93,5 +93,23 @@ private static void ld_wrd_lst() throws IOException {
 			PR.write(ELEMENT + "\n");
 		}
 		
+	}
+	
+	private static void gen_2() throws IOException{
+		ArrayList<String> duplicate_BL = new ArrayList<String>();
+		for(String s:BLKLST)
+		{
+			duplicate_BL.add(s);
+		}
+		PrintWriter pr = new PrintWriter(new File("tempFiles/gen2.txt"));
+		for(int i = 0; i < BLKLST.size();i++)
+		{
+			for(String x : duplicate_BL)
+			{
+				pr.write(BLKLST.get(i) +" "+x+"\n");
+			}
+			duplicate_BL.remove(0);
+		}
+		pr.close();
 	}
 }

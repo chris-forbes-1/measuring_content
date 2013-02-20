@@ -1,4 +1,3 @@
-Black List word : do you even lift? Total word count : 0
 Black List word : anal Total word count : 12
 Black List word : ass Total word count : 96
 Black List word : balls Total word count : 3
@@ -46,7 +45,7 @@ Black List word : nipples Total word count : 32
 Black List word : nutsack Total word count : 0
 Black List word : orgasm Total word count : 6
 Black List word : penis Total word count : 12
-Black List word : pussy Total word count : 164
+Black List word : pussy Total word count : 163
 Black List word : panties Total word count : 84
 Black List word : panty's Total word count : 0
 Black List word : pantys Total word count : 1
@@ -59,8 +58,9 @@ Black List word : bang Total word count : 1
 Black List word : jackoff Total word count : 0
 Black List word : finger Total word count : 65
 Black List word : vagina Total word count : 0
-Black List word : rub touch Total word count : 0
-Black List word : fuck Total word count : 160
+Black List word : rub Total word count : 66
+Black List word : touch Total word count : 73
+Black List word : fuck Total word count : 159
 Black List word : screw Total word count : 0
 Black List word : shag Total word count : 0
 Black List word : suck Total word count : 110
@@ -140,7 +140,7 @@ Black List word : tittyfuck Total word count : 0
 Black List word : titty fuck Total word count : 0
 Black List word : titfuck Total word count : 0
 Black List word : twat Total word count : 0
-Black List word : fuk Total word count : 1
+Black List word : fuk Total word count : 0
 Black List word : fuc Total word count : 0
 Black List word : fck Total word count : 2
 Black List word : rough you up Total word count : 0
