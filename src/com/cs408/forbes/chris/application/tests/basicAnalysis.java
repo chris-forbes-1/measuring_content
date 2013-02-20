@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
+import com.cs408.forbes.chris.analysis.classes.Multi_word_frequency_analysis;
 import com.cs408.forbes.chris.global.comms.NgramGenerator;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 import com.cs408.forbes.chris.global.comms.TearDown;
@@ -56,7 +57,35 @@ public class basicAnalysis {
 	default: ;
 	}
 	
+	System.out.println("Starting Single word Term search...\n\n");
 	
+	System.out.println("Beginning Analysis:");
+	Basic_frequency_Analysis bfa = new Basic_frequency_Analysis();
+	try {
+		ArrayList<Analysed_words> wordList = bfa.analyse();
+		for(Analysed_words AL : wordList)
+		{
+			System.out.println(AL.getWord_() + " " + AL.getCounted_());
+		}
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
+	
+	try {
+		Multi_word_frequency_analysis mwfa = new Multi_word_frequency_analysis("tempFiles/");
+		ArrayList<Analysed_words> mwfa_a = mwfa.analyse();
+		for(Analysed_words A : mwfa_a)
+		{
+			System.out.println(A.getWord_() + " " + A.getCounted_());
+		}
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	System.out.println("Multi-word term complete");
 	
 	}
 	
@@ -69,18 +98,7 @@ public class basicAnalysis {
 		} catch (IOException e) {
 			System.out.println("Error found with default locations please contct \n christopher.forbes@strath.ac.uk");
 		}
-		System.out.println("Beginning Analysis:");
-		Basic_frequency_Analysis bfa = new Basic_frequency_Analysis();
-		try {
-			ArrayList<Analysed_words> wordList = bfa.analyse();
-			for(Analysed_words AL : wordList)
-			{
-				System.out.println(AL.getWord_() + " " + AL.getCounted_());
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		//TODO Remove for final
 		//TearDown.tearDown();
 		

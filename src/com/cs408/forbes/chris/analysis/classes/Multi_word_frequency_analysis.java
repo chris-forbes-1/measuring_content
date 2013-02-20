@@ -86,7 +86,13 @@ public class Multi_word_frequency_analysis {
 		{
 			wc++;
 		}
-		bl_src(x);
+		//bl_src(x);
+		try {
+			ngramSearch(x);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return wc;
 	}
 	
@@ -115,6 +121,27 @@ public class Multi_word_frequency_analysis {
 				}
 			}
 		}
+	}
+	
+	private static void ngramSearch(String[] lne_sp) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new FileReader("tempFiles/gen2.txt"));
+		String lne = "";
+		String[] s_lne;
+		while ((lne = br.readLine())!= null)
+		{
+			s_lne = lne.split("\\s+");
+			for(int i = 0; i < lne_sp.length; i++)
+			{
+				for(String s : s_lne){
+				if(lne_sp[i].equalsIgnoreCase(s)){
+					int zx = bl_words.get(i).getCounted_();
+					bl_words.get(i).setCounted_(zx + 1 ); 
+				}
+				}
+			}
+		}
+		br.close();
 	}
 
 }
