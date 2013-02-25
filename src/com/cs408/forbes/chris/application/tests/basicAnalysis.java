@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
-import com.cs408.forbes.chris.analysis.classes.Multi_word_frequency_analysis;
 import com.cs408.forbes.chris.global.comms.NgramGenerator;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 import com.cs408.forbes.chris.global.comms.TearDown;

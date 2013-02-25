@@ -3,7 +3,7 @@ package com.cs408.forbes.chris.analysis.classes;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import com.cs408.forbes.chris.analysis.classes.*;
 import com.cs408.forbes.chris.analysis.interfaces.Textual_Analysis;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
 /**
@@ -13,7 +13,7 @@ import com.cs408.forbes.chris.analysis.types.Analysed_words;
  *
  */
 @SuppressWarnings("unused")
-public class Analyzer implements Textual_Analysis {
+public class Analyzer implements Textual_Analysis{
 
 	private ArrayList<Analysed_words> awl;
 	

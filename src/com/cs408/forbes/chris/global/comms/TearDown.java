@@ -20,11 +20,12 @@ public class TearDown {
 		{
 			if(d.delete())
 			{
-				System.out.println("removing tempfiles");
+				
 			}else{
 				System.out.println("error during tempfile removal");
 			}
 		}
+		System.out.println("Tear Down Complete...\n");
 	}
 
 }
