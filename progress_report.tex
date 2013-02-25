@@ -1,0 +1,56 @@
+\documentclass{report}
+\usepackage{ifxetex}
+\usepackage[svgnames]{xcolor}
+\ifxetex{%
+  \usepackage{fontspec}
+  \setmainfont{Linux Libertine O} % or any font on your system
+  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O} % or any font on your system
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{libertine} % or any other font package (or none)
+  \newcommand*\quotefont{\fontfamily{fxl}} % selects Libertine for quote font
+\fi
+\usepackage{tikz}
+\usepackage{framed}
+% Make commands for the quotes
+\newcommand*{\openquote}{\tikz[remember picture,overlay,xshift=-15pt,yshift=-10pt]
+     \node (OQ) {\quotefont\fontsize{60}{60}\selectfont``};\kern0pt}
+\newcommand*{\closequote}{\tikz[remember picture,overlay,xshift=15pt,yshift=10pt]
+     \node (CQ) {\quotefont\fontsize{60}{60}\selectfont''};}
+% select a colour for the shading
+\definecolor{shadecolor}{named}{Azure}
+% wrap everything in its own environment
+\newenvironment{shadequote}%
+{\begin{snugshade}\begin{quote}\openquote}
+{\hfill\closequote\end{quote}\end{snugshade}}
+
+\begin{document}
+\title{Measuring Sexually Explicit Content Online \\ Progress Report}
+\author{Christopher Forbes}
+\maketitle
+
+\section*{Progress since the poster day}
+After my presentation at the poster day on Feburary 6th Dr Weir had recommended I look in to the concept of "Ngram Generation" in order to aid with issues I had mentioned with the multi-term . After a little background reading on the subject i had set to work on generating the possible Ngrams for the dataset (or black list). The biggest issue occurred has been described below.
+\begin{description}
+\item[Concurrent Access Exceptions]
+In order to generate the algorithms in a relativley memory efficient way I constantly read from file. Modify the line and then write it back. In a vain attempt at speeding up the process i decided to thread this aspect of the application, which caused access violations as each thread began to access the files at the same time. In order to by pass this I abanonded the multi-threaded approach and made a slightly more elegant single threaded approach duplicating the black list stored in memory and modify the duplicate.
+\end{description}
+
+
+\section*{Addressing the second assessors comments}
+Below is a list of the recommendations made by my second assessor and how i have addressed them.
+\begin{shadequote}
+At this stage I would recommend the production of a draft background and related works chapter to get this out of the way and also to inform/measure future development.
+\end{shadequote}
+As suggested i have begun to draft a report on specific areas of background reading, as well as the use of Mendeley Desktop to keep track of which papers are being used as reference.
+\\
+\begin{shadequote}
+A number of design and implementation decisions still need to be pinned down and it’s important that this is done without undue delay since the final product will need to demonstrate some novelty and innovation.
+\end{shadequote}
+
+
+\begin{shadequote}
+Christopher is making good progress albeit slightly behind schedule according to the project plan. Prototypes have been implemented and early results produced that form a good basis for further development.   to gain a good honours project mark. Likewise, a good evaluation strategy will need to be adopted and results from this analysed to produce a valid comparison with other, related, systems. Ethics approval needs also to be sorted out ASAP given the nature of the project. On the basis of the poster, the project plan and discussion, I am confident that Christopher will complete the project to a good standard.  
+\end{shadequote}
+\end{document}
