@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
+import com.cs408.forbes.chris.analysis.classes.SWDLParser;
 import com.cs408.forbes.chris.global.comms.NgramGenerator;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 import com.cs408.forbes.chris.global.comms.TearDown;
@@ -70,7 +71,20 @@ public class basicAnalysis {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
+	System.out.println("Do you want to test SWDLParser?");
+	String param2 = sc.next();
+	switch(param2)
+	{
+	case "y" :try {
+			SWDLParser SWP = new SWDLParser("WordList/lem_wrd.swdl");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	break;
+	case "n" : ;
+	break;
+	}
 //	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
 //	
 //	try {

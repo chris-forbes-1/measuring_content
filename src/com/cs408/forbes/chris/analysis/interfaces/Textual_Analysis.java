@@ -11,6 +11,6 @@ import com.cs408.forbes.chris.analysis.types.Analysed_words;
  */
 public interface Textual_Analysis {
 	
-	public ArrayList<Analysed_words> Analyze(String fileDir);  
-	
+	public ArrayList<Analysed_words> Analyze(String fileDir); 
+	public ArrayList<Analysed_words> Analyze();
 }

@@ -18,7 +18,7 @@ import java.io.BufferedReader;
  *         combinations of the line
  */
 @SuppressWarnings("unused")
-public class Multi_word_frequency_analysis {
+public class Multi_word_frequency_analysis extends Analyzer {
 	private static ArrayList<Analysed_words> bl_words = new ArrayList<Analysed_words>();
 	private static String fp = " ";
 	private static ArrayList<Integer> fle_wrd_count = new ArrayList<Integer>();

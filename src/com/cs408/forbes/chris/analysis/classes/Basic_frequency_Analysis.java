@@ -19,7 +19,7 @@ import com.cs408.forbes.chris.global.comms.Logfiles;
  * 	terms:	creating files to write
  */
 
-public class Basic_frequency_Analysis {
+public class Basic_frequency_Analysis extends Analyzer {
 	private static File[] dir_lst;
 	static String fp = " ";
 	int fck_cntr = 0;
@@ -31,8 +31,11 @@ public class Basic_frequency_Analysis {
 		fp = fl_dir;
 	}
 	public Basic_frequency_Analysis(){
+		super();
 		fp = "tempFiles/";
+		
 	}
+	@Override
 	public ArrayList<Analysed_words> analyse () throws IOException{
 		System.out.println("Beginning Basic_frequency analysis \n please wait...");
 		System.out.println("Loading blacklist");
@@ -49,6 +52,7 @@ public class Basic_frequency_Analysis {
 	 * @param file_Directory
 	 * @throws IOException
 	 */
+
 	private static void Parse_directory(String file_Directory) throws IOException {
 		File fl_dir_ = new File(file_Directory);
 		dir_lst = fl_dir_.listFiles();
@@ -74,6 +78,7 @@ public class Basic_frequency_Analysis {
 		System.out.println("We can assume that their is approx. "
 				+ average_word_length * 549 + " words in the dataset");
 
+
 	}
 
 	/**
@@ -83,7 +88,9 @@ public class Basic_frequency_Analysis {
 	 * @param fle
 	 * @throws IOException
 	 */
+	
 	private static void parse_file(File fle) throws IOException {
+	
 		BufferedReader buf_rdr = new BufferedReader(new FileReader(fle));
 		int fle_wrd_cnter = 0;
 		String lne;
@@ -119,9 +126,10 @@ public class Basic_frequency_Analysis {
 	 * black list it will add it to the list as an analysed_word type
 	 * 
 	 * @param word
+	 * @return 
 	 * @throws IOException
 	 */
-	private static void ld_wrd_lst() throws IOException {
+	protected static ArrayList<Analysed_words> ld_wrd_lst() throws IOException {
 		
 		BufferedReader bfrdr = new BufferedReader(new FileReader(
 				"WordList/wordlist.txt"));
@@ -133,7 +141,7 @@ public class Basic_frequency_Analysis {
 //		for (Analysed_words aw : blk_lst) {
 //			System.out.println("black list: " + aw.getWord_());
 //		}
-
+		return blk_lst;
 	}
 	
 	/**
@@ -142,6 +150,7 @@ public class Basic_frequency_Analysis {
 	 * @return blwrd
 	 */
 	private static int srch_wrd(String wrd_){
+		
 		int blwrd = 0;
 		for(int i = 0; i < blk_lst.size(); i++){
 			if(wrd_.compareToIgnoreCase(blk_lst.get(i).getWord_()) == 0)
