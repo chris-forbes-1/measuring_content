@@ -2,6 +2,7 @@ package com.cs408.forbes.chris.analysis.classes;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.io.IOException;
 import com.cs408.forbes.chris.analysis.interfaces.SWDL;
 @SuppressWarnings("unused")
 public class SWDL_Lemmatization implements SWDL {
-	protected static Map<String, List<String>> SWDL_FILE_DATA; 
+	protected static Map<String, List<String>> SWDL_FILE_DATA = new HashMap<String,List<String>>(); 
 	public SWDL_Lemmatization() {
 		try {
 			SWDLParser fleP = new SWDLParser("WordList/lem_wrd.swdl");
@@ -27,7 +28,7 @@ public class SWDL_Lemmatization implements SWDL {
 		
 		try{
 			SWDLParser SWD = new SWDLParser(FilePath);
-			SWDL_FILE_DATA = SWD.parseswdl();
+			SWDL_FILE_DATA.putAll(SWD.parseswdl());
 		}catch (IOException IOE){
 			IOE.printStackTrace();
 		}
