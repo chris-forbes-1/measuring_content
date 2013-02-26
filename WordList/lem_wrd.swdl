@@ -1,5 +1,6 @@
 #form <associated word> : <verb/noun>, <verb/noun>, @  replace <verb/noun> with your word such as fuck
 #! references words and variations such as sex also references fuck so sex : !fuck, @
+# Comments can also be left in this file using the # as the starting character
 fuck : fuk,fuckk,fek,feck,fricken,screw,shag,screwing, @
 dick : cock,penis,schlong,cok,coc,balls,ballz,balz,bals,knob, @
 ass : arse,anus,butt,bum, @
@@ -10,4 +11,4 @@ masturbation : rub,finger,jackoff,jerkoff,wank,jacking off,fisting, @
 fellatio : suck,suck me off, @
 breasts : boobs,tits, @
 sex_act : handjob,hand fuck,tittyfuck,titty fuck,titfuck,muff diving, @
-doneTo : rough you up, @
+doneTo : rough you up, touch you, @

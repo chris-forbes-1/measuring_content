@@ -33,7 +33,8 @@ public class SWDLParser {
 	 */
 	public SWDLParser (String FileP) throws IOException{
 		br = new BufferedReader(new FileReader(new File(FileP)));
-		setSWDLData((br.ready() == true) ? (parseswdl()) : (null)); 
+//		setSWDLData((br.ready() == true) ? (parseswdl()) : (null)); 
+		parseswdl();
 	}
 	
 	/**
@@ -45,10 +46,11 @@ public class SWDLParser {
 	{
 		Pattern p = Pattern.compile("((?:[a-z][a-z0-9_]*))", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 		String associated_word = "";
-		List<String> thesaurs = new ArrayList<String>();
+		List<String> thesaurs;
 		Map<String, List<String>>SWDLDatas = new HashMap<String,List<String>>();
 		String lne = "";
 		while ((lne = br.readLine()) != null){
+			thesaurs = new ArrayList<String>();
 			if(lne.startsWith("#") || lne.startsWith(" #")){
 				continue;
 			}else if(!lne.endsWith(", @")){
@@ -61,7 +63,12 @@ public class SWDLParser {
 				lne.replaceFirst(p.pattern(), "");
 				String [] s = lne.split(",", lne.length());
 				for(String x : s){
+					if(x == ", @"){
+						continue;
+					}else{
 					thesaurs.add(x);
+					System.out.println("Thesaurus word: "+ x);
+					}
 				}
 				SWDLDatas.put(associated_word, thesaurs);
 			}
@@ -77,5 +84,6 @@ public class SWDLParser {
 	public static void setSWDLData(Map<String,List<String>> sWDLData) {
 		SWDLData = sWDLData;
 	}
+	
 	
 }
