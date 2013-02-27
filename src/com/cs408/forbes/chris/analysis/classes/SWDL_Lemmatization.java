@@ -16,7 +16,7 @@ public class SWDL_Lemmatization implements SWDL {
 	public SWDL_Lemmatization() {
 		try {
 			SWDLParser fleP = new SWDLParser("WordList/lem_wrd.swdl");
-			SWDL_FILE_DATA = fleP.parseswdl();
+			SWDL_FILE_DATA = fleP.getSWDLData();
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -28,18 +28,19 @@ public class SWDL_Lemmatization implements SWDL {
 		
 		try{
 			SWDLParser SWD = new SWDLParser(FilePath);
-			SWDL_FILE_DATA.putAll(SWD.parseswdl());
+			SWDL_FILE_DATA.putAll(SWD.getSWDLData());
 		}catch (IOException IOE){
 			IOE.printStackTrace();
 		}
 	}
 
 	@Override
-	public String Search(String Line) throws NullPointerException {
+	public boolean Search(String Line) throws NullPointerException {
 		String [] x = Line.split(" ");
 		if(SWDL_FILE_DATA == null){
 			throw new NullPointerException("Search NPE");
 		}
+		boolean repacelement_takenPlace = false;
 //		File f = new File ("tempFiles/");
 //		File [] tmp = f.listFiles();
 //		/**
@@ -59,13 +60,16 @@ public class SWDL_Lemmatization implements SWDL {
 				{
 					if(x[i].compareToIgnoreCase(verb_noun.get(y)) == 0){
 					System.out.println("Replaced " + x[i] + "with " + pairs.getKey());
+					replacement_takenPlace = true;
 					}else{
 						continue;
 					}
 				}
 			}
 		}
-		return "";
+		System.out.println("::Writing to lemmatized logFiles:::");
+		
+		return replacement_takenPlace;
 		
 	}
 	@Override

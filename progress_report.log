@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.17)  25 FEB 2013 10:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.8.17)  27 FEB 2013 11:11
 entering extended mode
  %&-line parsing enabled.
 **progress_report.tex
@@ -778,7 +778,7 @@ File: ProjPlan.png Graphic file (type png)
 Here is how much of TeX's memory you used:
  26545 strings out of 493848
  384482 string characters out of 1152823
- 546393 words of memory out of 3000000
+ 546392 words of memory out of 3000000
  29532 multiletter control sequences out of 15000+50000
  49969 words of font info for 33 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191

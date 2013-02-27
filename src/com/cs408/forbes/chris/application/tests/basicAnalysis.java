@@ -95,7 +95,7 @@ public class basicAnalysis {
 //	}
 	System.out.println(":::Starting SWDL, Lemmatization:::");
 	SWDL_Lemmatization swdl_ = new SWDL_Lemmatization();
-	swdl_.Search("I want to fuck you");
+	swdl_.Search("I want to rape you rape your family rape your face");
 //	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
 //	
 //	try {

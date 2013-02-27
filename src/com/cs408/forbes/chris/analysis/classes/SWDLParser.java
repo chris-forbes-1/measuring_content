@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
  */
 public class SWDLParser {
 	
-	private static Map<String,List<String>> SWDLData ;
+	private Map<String,List<String>> SWDLData ;
 	private static BufferedReader br ;
 	
 	/**
@@ -34,7 +34,8 @@ public class SWDLParser {
 	public SWDLParser (String FileP) throws IOException{
 		br = new BufferedReader(new FileReader(new File(FileP)));
 //		setSWDLData((br.ready() == true) ? (parseswdl()) : (null)); 
-		parseswdl();
+		SWDLData = new HashMap<String, List<String>>();
+		SWDLData.putAll(parseswdl());
 	}
 	
 	/**
@@ -77,11 +78,11 @@ public class SWDLParser {
 		return SWDLDatas;
 	}
 
-	public static Map<String,List<String>> getSWDLData() throws NullPointerException {
+	public Map<String,List<String>> getSWDLData() throws NullPointerException {
 		return SWDLData;
 	}
 
-	public static void setSWDLData(Map<String,List<String>> sWDLData) {
+	public void setSWDLData(Map<String,List<String>> sWDLData) {
 		SWDLData = sWDLData;
 	}
 	
