@@ -1,7 +1,11 @@
 package com.cs408.forbes.chris.application.tests;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
@@ -41,7 +45,7 @@ public class basicAnalysis {
 			System.out.println("Error with file location");
 		}
 	break;
-	default: DefaultRemoval();
+	//default: DefaultRemoval();
 	}
 	System.out.println("Do you want to generate Ngrams of the dataset? \n (y/n)");
 
@@ -51,7 +55,7 @@ public class basicAnalysis {
 	case "y":try {
 			NgramGenerator.generateNgrams("WordList/wordlist.txt");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		break;
@@ -77,7 +81,7 @@ public class basicAnalysis {
 			System.out.println(AL.getWord_() + " " + AL.getCounted_());
 		}
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 //	System.out.println("Do you want to test SWDLParser?");
@@ -87,7 +91,7 @@ public class basicAnalysis {
 //	case "y" :try {
 //			SWDLParser SWP = new SWDLParser("WordList/lem_wrd.swdl");
 //		} catch (IOException e) {
-//			// TODO Auto-generated catch block
+//			
 //			e.printStackTrace();
 //		}
 //	break;
@@ -96,7 +100,28 @@ public class basicAnalysis {
 //	}
 	System.out.println(":::Starting SWDL, Lemmatization:::");
 	SWDL swdl_ = new SWDL_Lemmatization();
-	swdl_.Search("I want to rape you rape your family rape your face");
+	File f = new File ("tempFiles/tempcan_i_rape_you_anally.txt");
+	System.out.println("Starting test on " + f.getName());
+	List<String> lemLne = new ArrayList<String>();
+	try {
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		String lne = "";
+		while ((lne = br.readLine())!= null){
+			lemLne.add(swdl_.Search(lne));
+		}
+		for(String s : lemLne){
+			System.out.println(s);
+		}
+		br.close();
+		swdl_.writeLemitizedFile(lemLne, f.getName());
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	catch(IOException IOE){
+		IOE.printStackTrace();
+	}
+	
 //	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
 //	
 //	try {
@@ -107,7 +132,7 @@ public class basicAnalysis {
 //			System.out.println(A.getWord_() + " " + A.getCounted_());
 //		}
 //	} catch (IOException e) {
-//		// TODO Auto-generated catch block
+//		
 //		e.printStackTrace();
 //	}
 //	System.out.println("Multi-word term complete");
@@ -125,8 +150,8 @@ public class basicAnalysis {
 			System.out.println("Error found with default locations please contct \n christopher.forbes@strath.ac.uk");
 		}
 		
-		//TODO Remove for final
-	TearDown.tearDown();
+		
+	
 		
 	}
 

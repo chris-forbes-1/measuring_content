@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
@@ -18,8 +20,10 @@ import java.util.regex.Pattern;
  * fruit : apple,tomato,pineapple, @
  * salad : lettuce,!fruit,cucumber, @
  * 
+ * the @ sign is their in case the user of the framework wants to do character operations on the strings
+ * the @ is simply a terminator
  * @author cforbes2013 <christopher.forbes@strath.ac.uk>
- *
+ * TODO: Referencing for SWDL syntax ! operator
  */
 public class SWDLParser {
 	
@@ -47,6 +51,7 @@ public class SWDLParser {
 	protected Map<String,List<String>> parseswdl() throws IOException
 	{
 		Pattern p = Pattern.compile("((?:[a-z][a-z0-9_]*))", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+		
 		String associated_word = "";
 		List<String> thesaurs;
 		Map<String, List<String>>SWDLDatas = new HashMap<String,List<String>>();
@@ -65,8 +70,16 @@ public class SWDLParser {
 				lne.replaceFirst(p.pattern(), "");
 				String [] s = lne.split(",", lne.length());
 				for(String x : s){
-					if(x == ", @"){
+					if(x == " @"){
 						continue;
+					}else if(x.startsWith("!")){
+						if(SWDLDatas.containsKey(x)){
+							Iterator <Entry<String, List<String>>> IT = SWDLDatas.entrySet().iterator();
+							while(IT.hasNext()){
+								
+							}
+							
+						}
 					}else{
 					thesaurs.add(x);
 					System.out.println("Thesaurus word: "+ x);

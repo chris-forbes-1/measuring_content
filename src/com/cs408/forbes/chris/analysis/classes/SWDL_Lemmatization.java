@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.io.IOException;
 
+import sun.util.logging.PlatformLogger;
+
 import com.cs408.forbes.chris.analysis.interfaces.SWDL;
 @SuppressWarnings("unused")
 /**
@@ -29,7 +31,6 @@ public class SWDL_Lemmatization implements SWDL {
 			SWDL_FILE_DATA = fleP.getSWDLData();
 		
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -68,8 +69,9 @@ public class SWDL_Lemmatization implements SWDL {
 				for(int i = 0; i < x.length; i++)
 				{
 					if(x[i].compareToIgnoreCase(verb_noun.get(y)) == 0){
+						x[i] = pairs.getKey();
 					// <TESTING LINE > System.out.println("Replaced " + x[i] + "with " + pairs.getKey());
-					
+					System.out.println("HIT");
 					}else{
 						continue;
 					}
@@ -77,8 +79,12 @@ public class SWDL_Lemmatization implements SWDL {
 			}
 		}
 		
-		
-		return x.toString();
+		StringBuilder sb = new StringBuilder();
+		for(String s : x){
+			sb.append(s + " ");
+		}
+		sb.append("\n");
+		return sb.toString();
 		
 	}
 	@Override
@@ -97,13 +103,12 @@ public class SWDL_Lemmatization implements SWDL {
 	@Override
 	/**
 	 * :::IN PROGRESS:::
-	 * Simply writes the lemitized data back to a tempFile
+	 * Simply writes the lemitized data back to a tempFile/tmp followed by the existing temp filename
 	 */
 	public boolean writeLemitizedFile(List<String> LineList,String Filename) throws IOException{
 		PrintWriter pr = new PrintWriter(new File("tempFiles/" + "tmp" + Filename+"lem"));
-		for(String s : LineList)
-		{
-			pr.write(s);
+		for(int i = 0; i < LineList.size(); i ++){
+			pr.write(LineList.get(i));
 		}
 		pr.close();
 		return true;
