@@ -12,6 +12,7 @@ import com.cs408.forbes.chris.analysis.interfaces.SWDL;
 import com.cs408.forbes.chris.global.comms.NgramGenerator;
 import com.cs408.forbes.chris.global.comms.UserNameRemoval;
 import com.cs408.forbes.chris.global.comms.TearDown;
+@SuppressWarnings("unused")
 public class basicAnalysis {
 	private static Scanner sc;
 	/**
@@ -94,7 +95,7 @@ public class basicAnalysis {
 //	break;
 //	}
 	System.out.println(":::Starting SWDL, Lemmatization:::");
-	SWDL_Lemmatization swdl_ = new SWDL_Lemmatization();
+	SWDL swdl_ = new SWDL_Lemmatization();
 	swdl_.Search("I want to rape you rape your family rape your face");
 //	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
 //	
@@ -111,7 +112,7 @@ public class basicAnalysis {
 //	}
 //	System.out.println("Multi-word term complete");
 	
-	TearDown.tearDown();
+	//TearDown.tearDown();
 	}
 	
 	private static void DefaultRemoval() {
@@ -125,7 +126,7 @@ public class basicAnalysis {
 		}
 		
 		//TODO Remove for final
-		//TearDown.tearDown();
+	TearDown.tearDown();
 		
 	}
 

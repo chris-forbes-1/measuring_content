@@ -39,7 +39,8 @@ public class SWDLParser {
 	}
 	
 	/**
-	 * 
+	 * Although obvious from the name the parseswdl() function parses the the swdl file and places it into
+	 * a Map<String,List<String>> for easy access to associated words and their variations.
 	 * @return Map<String,List<String>>
 	 * @throws IOException
 	 */
@@ -77,14 +78,12 @@ public class SWDLParser {
 		}
 		return SWDLDatas;
 	}
-
+/**
+ * Getter Should be called after parse
+ * @return
+ * @throws NullPointerException
+ */
 	public Map<String,List<String>> getSWDLData() throws NullPointerException {
 		return SWDLData;
-	}
-
-	public void setSWDLData(Map<String,List<String>> sWDLData) {
-		SWDLData = sWDLData;
-	}
-	
-	
+	}	
 }
