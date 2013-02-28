@@ -25,6 +25,17 @@ public class TearDown {
 				System.out.println("error during tempfile removal");
 			}
 		}
+		f = new File("tempFiles/lem/");
+		ff = f.listFiles();
+		for(File d : ff)
+		{
+			if(d.delete())
+			{
+				
+			}else{
+				System.out.println("error during tempfile removal");
+			}
+		}
 		System.out.println("Tear Down Complete...\n");
 	}
 

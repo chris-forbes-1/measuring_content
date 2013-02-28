@@ -98,13 +98,16 @@ public class basicAnalysis {
 //	case "n" : ;
 //	break;
 //	}
+	
 	System.out.println(":::Starting SWDL, Lemmatization:::");
 	SWDL swdl_ = new SWDL_Lemmatization();
-	File f = new File ("tempFiles/tempcan_i_rape_you_anally.txt");
+	File f = new File ("tempFiles/");
+	File [] ff = f.listFiles();
+	for(File d : ff){
 	System.out.println("Starting test on " + f.getName());
 	List<String> lemLne = new ArrayList<String>();
 	try {
-		BufferedReader br = new BufferedReader(new FileReader(f));
+		BufferedReader br = new BufferedReader(new FileReader(d));
 		String lne = "";
 		while ((lne = br.readLine())!= null){
 			lemLne.add(swdl_.Search(lne));
@@ -113,7 +116,7 @@ public class basicAnalysis {
 			System.out.println(s);
 		}
 		br.close();
-		swdl_.writeLemitizedFile(lemLne, f.getName());
+		swdl_.writeLemitizedFile(lemLne, d.getName());
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -121,7 +124,7 @@ public class basicAnalysis {
 	catch(IOException IOE){
 		IOE.printStackTrace();
 	}
-	
+	}
 //	System.out.println("Single Term Analysis Complete \n\n Starting Multi- term analysis\n\n");
 //	
 //	try {
@@ -138,6 +141,13 @@ public class basicAnalysis {
 //	System.out.println("Multi-word term complete");
 	
 	//TearDown.tearDown();
+	System.out.println(":::Performing BFA on LEM:::");
+	try{
+	bfa = new Basic_frequency_Analysis("tempFiles/lem/");
+	bfa.analyse();
+	}catch (IOException IOE){
+		IOE.printStackTrace();
+	}
 	}
 	
 	private static void DefaultRemoval() {

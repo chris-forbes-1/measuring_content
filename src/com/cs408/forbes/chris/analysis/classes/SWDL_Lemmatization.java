@@ -16,7 +16,7 @@ import sun.util.logging.PlatformLogger;
 import com.cs408.forbes.chris.analysis.interfaces.SWDL;
 @SuppressWarnings("unused")
 /**
- * Used to perform Lemmatization a method not unlike the process of stemming in information retrival
+ * @desc Used to perform Lemmatization a method not unlike the process of stemming in information retrival
  * lemmatization has the benefits of stemming (removing duplicate words etc.) with the additional 
  * bonus of access to a thesaurus or in the case of STELA SWDL files, see the exemplar file lem_wrd.swdl
  * for details on the format of an SWDL file.
@@ -47,7 +47,7 @@ public class SWDL_Lemmatization implements SWDL {
 
 	@Override
 	/**
-	 * This method searches the given line with the SWDL file loaded into memory
+	 * @desc This method searches the given line with the SWDL file loaded into memory
 	 * it will modify the line neutralising the language by replacing the noun/verb
 	 * with it's associated word see exemplar SWDL file 'lem_wrd.swdl' this will be extended to 
 	 * operate of the files instead
@@ -106,7 +106,7 @@ public class SWDL_Lemmatization implements SWDL {
 	 * Simply writes the lemitized data back to a tempFile/tmp followed by the existing temp filename
 	 */
 	public boolean writeLemitizedFile(List<String> LineList,String Filename) throws IOException{
-		PrintWriter pr = new PrintWriter(new File("tempFiles/" + "tmp" + Filename+"lem"));
+		PrintWriter pr = new PrintWriter(new File("tempFiles/lem/" + "tmp" + Filename));
 		for(int i = 0; i < LineList.size(); i ++){
 			pr.write(LineList.get(i));
 		}
