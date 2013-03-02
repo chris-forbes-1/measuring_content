@@ -106,7 +106,7 @@ public class SWDL_Lemmatization implements SWDL {
 	 * Simply writes the lemitized data back to a tempFile/tmp followed by the existing temp filename
 	 */
 	public boolean writeLemitizedFile(List<String> LineList,String Filename) throws IOException{
-		PrintWriter pr = new PrintWriter(new File("tempFiles/lem/" + "tmp" + Filename));
+		PrintWriter pr = new PrintWriter(new File("lem/" + "tmp" + Filename));
 		for(int i = 0; i < LineList.size(); i ++){
 			pr.write(LineList.get(i));
 		}

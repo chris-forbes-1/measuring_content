@@ -86,13 +86,13 @@ public class Multi_word_frequency_analysis extends Analyzer {
 		{
 			wc++;
 		}
-		//bl_src(x);
-		try {
-			ngramSearch(x);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		bl_src(x);
+//		try {
+//			ngramSearch(x);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return wc;
 	}
 	
