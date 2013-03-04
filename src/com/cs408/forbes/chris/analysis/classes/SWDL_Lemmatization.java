@@ -71,7 +71,7 @@ public class SWDL_Lemmatization implements SWDL {
 					if(x[i].compareToIgnoreCase(verb_noun.get(y)) == 0){
 						x[i] = pairs.getKey();
 					// <TESTING LINE > System.out.println("Replaced " + x[i] + "with " + pairs.getKey());
-					System.out.println("HIT");
+					//System.out.println("HIT");
 					}else{
 						continue;
 					}

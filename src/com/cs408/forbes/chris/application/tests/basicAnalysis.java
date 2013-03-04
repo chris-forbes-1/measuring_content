@@ -125,9 +125,9 @@ public class basicAnalysis {
 				while ((lne = br.readLine()) != null) {
 					lemLne.add(swdl_.Search(lne));
 				}
-				for (String s : lemLne) {
-					System.out.println(s);
-				}
+//				for (String s : lemLne) {
+//					System.out.println(s);
+//				}
 				br.close();
 				swdl_.writeLemitizedFile(lemLne, d.getName());
 			} catch (FileNotFoundException e) {

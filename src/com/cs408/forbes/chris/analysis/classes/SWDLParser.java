@@ -82,7 +82,7 @@ public class SWDLParser {
 						}
 					}else{
 					thesaurs.add(x);
-					System.out.println("Thesaurus word: "+ x);
+					//System.out.println("Thesaurus word: "+ x);
 					}
 				}
 				SWDLDatas.put(associated_word, thesaurs);
