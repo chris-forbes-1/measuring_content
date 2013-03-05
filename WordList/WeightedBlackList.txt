@@ -1,0 +1,147 @@
+#the values are relativley arbitrary however words or phrases which are generally associated with sexual explicitness are given
+#a value of 5 and words which generally are used in educational features are given given a score of zero other phrases
+#are given values between 1 & 5 dependant on the expected use of them in the data set 
+anal,5
+ass,1
+balls,1
+blowjob,5
+boner,5
+boobs,1
+clit,3
+climax,5
+cum,5
+cumm,5
+cock,5
+dick,4
+dildo,5
+erection,2
+ejaculation,2
+finger,3
+gspot,1
+cum on ur face,5
+cumm on ur face,5
+cummm on your face,5
+cum on your face,5
+fill your pussy,5
+you see my dick,5
+u see my dick,5
+usee my dick,5
+i got big balls,2
+i have big balls,2
+horny,5
+are you horny,5
+u horny,5
+fuck your ass,5
+fuk your ass,5
+fuck ur ass,5
+fuk ur ass,5
+fucked her butt,5
+fucked his butt,5
+fuckd her butt,5
+fuckd his butt,5
+incest,5
+jizz,5
+exposed,1
+knob,1
+nipples,3
+nutsack,2
+orgasm,2
+penis,2
+pussy,5
+panties,3
+panty's,3
+pantys,3
+rape,3
+scrotum,2
+sperm,2
+spunk,4
+thong,3
+bang,2
+jackoff,1
+vagina,1
+rub,1
+touch,1
+fuck,4
+screw,3
+shag,3
+suck,4
+minge,2
+wank,3
+fuck you hard,2
+naked,2
+sexy,4
+sexier,4
+sexiest,4
+anal sex,5
+cyber sex,5
+dip your stick,5
+dip your wick,5
+giving head,5
+recieve head,5
+give me head,5
+hard cock,5
+hard dick,5
+jacking off,5
+oral sex,5
+suck my dick,5
+suck my cock,5
+wet dreams,3
+asscracker,5
+asshopper,5
+assjacket,5
+ass smacking,5
+ass fucking,5
+blowjob ,5
+bollocks,2
+bonkboner,2
+boobs,4
+tits,4
+bumblefuck,5
+circle jerk,5
+cluster fuck,5
+cocksucking,5
+cocksucker,5
+cock sucker,5
+cocksuck,5
+cornholing,5
+cumshot,5
+cunt,5
+cunthole,5
+dick milk,5
+lick your pussy,5
+eating pussy,5
+eat your pussy,5
+faggot,3
+fag,3
+fagfucker,3
+fist,2
+fisting,5
+fist fucking,5
+fuck butter,5
+gang bang,5
+threesome,5
+3some,5
+gayfuck,3
+get laid,4
+gooch,4
+handjob,4
+hand fuck,5
+hoe,3
+whore,4
+knockers,2
+muff diving,5
+pussy licking,5
+stroke my dick,5
+screwing,5
+slut,5
+squirt,5
+squirting,5
+tittyfuck,5
+titty fuck,5
+titfuck,5
+twat,3
+fuk,4
+fuc,4
+fck,4
+rough you up,4
+have you ever used toys?,5

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
@@ -90,7 +91,7 @@ public class Basic_frequency_Analysis extends Analyzer {
 	 */
 	
 	private static void parse_file(File fle) throws IOException {
-	
+	PrintWriter pr = new PrintWriter(new File("contentLogs/"+fle.getName() + "_KeywordDensity.txt"));
 		BufferedReader buf_rdr = new BufferedReader(new FileReader(fle));
 		int fle_wrd_cnter = 0;
 		String lne;
@@ -115,6 +116,9 @@ public class Basic_frequency_Analysis extends Analyzer {
 		counter.add(fle_wrd_cnter);
 		System.out.println("total word count for file " + fle.getName() + " is " +fle_wrd_cnter);
 		System.out.println("KeyWord Density : "+ calculate_ratio(fle_wrd_cnter, totalBLwords) + "%");
+		pr.write(Float.toString(calculate_ratio(fle_wrd_cnter, totalBLwords)));
+		pr.close();
+		
 		
 		buf_rdr.close();
 

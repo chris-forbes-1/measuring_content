@@ -5,6 +5,10 @@ public class Weighted_analysed_word {
 	private int occurences = 0;
 	private float weight = 0.0F;
 	
+	public Weighted_analysed_word(String word_phrase, float weight){
+		this.word = word_phrase;
+		this.weight = weight;
+	}
 	public String getWord() {
 		return word;
 	}

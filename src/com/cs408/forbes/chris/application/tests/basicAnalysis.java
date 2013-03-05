@@ -13,6 +13,7 @@ import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
 import com.cs408.forbes.chris.analysis.classes.Multi_word_frequency_analysis;
 import com.cs408.forbes.chris.analysis.classes.SWDLParser;
 import com.cs408.forbes.chris.analysis.classes.SWDL_Lemmatization;
+import com.cs408.forbes.chris.analysis.classes.Weighted_analyzer;
 import com.cs408.forbes.chris.analysis.interfaces.SWDL;
 import com.cs408.forbes.chris.global.comms.Analysis_control;
 import com.cs408.forbes.chris.global.comms.KeyWordDensity;
@@ -39,6 +40,7 @@ public class basicAnalysis {
 	}
 
 	public static void init() {
+		TearDown.tearDown();
 		DisplayLogo();
 		System.out
 				.println("\n Do you want to use the default dataset??\n (y/n)");
@@ -170,8 +172,9 @@ public class basicAnalysis {
 			combinedLists  = Analysis_control.Combine_lists(multiWordlList, wordList);
 			for(Analysed_words AW : combinedLists){
 				System.out.println("Word : "+ AW.getWord_() + " Total count : " + AW.getCounted_());
-				
 			}
+			Logfiles.createLogs(combinedLists);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -182,8 +185,15 @@ public class basicAnalysis {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		TearDown.tearDown();
+		System.out.println(":::Launching Weighted Analysis test:::");
+		Weighted_analyzer wa = new Weighted_analyzer();
+		try {
+			wa.LoadWeightList("WordList/WeightedBlackList.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//TearDown.tearDown();
 	}
 
 	private static void DefaultRemoval() {
