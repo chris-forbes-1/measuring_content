@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
@@ -160,6 +163,14 @@ public class basicAnalysis {
 		try {
 			bfa = new Basic_frequency_Analysis("lem/");
 			bfa.analyse();
+			Map<String, Float> kwd = bfa.getKWDs();
+			Iterator<Entry<String, Float>> IT = kwd.entrySet().iterator();
+			while(IT.hasNext()){
+				
+				Map.Entry<String, Float> pairs = (Map.Entry<String, Float>)IT.next();
+				System.out.println("File: " + pairs.getKey() + " "+ "KWD: " + pairs.getValue());
+				
+			}
 		} catch (IOException IOE) {
 			IOE.printStackTrace();
 		}
@@ -170,9 +181,9 @@ public class basicAnalysis {
 			ArrayList<Analysed_words> multiWordlList = mwfa.analyse();
 			System.out.println(":::Performing Merge:::");
 			combinedLists  = Analysis_control.Combine_lists(multiWordlList, wordList);
-			for(Analysed_words AW : combinedLists){
-				System.out.println("Word : "+ AW.getWord_() + " Total count : " + AW.getCounted_());
-			}
+//			for(Analysed_words AW : combinedLists){
+//				System.out.println("Word : "+ AW.getWord_() + " Total count : " + AW.getCounted_());
+//			}
 			Logfiles.createLogs(combinedLists);
 			
 		} catch (IOException e) {

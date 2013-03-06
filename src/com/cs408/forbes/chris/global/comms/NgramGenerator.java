@@ -64,7 +64,7 @@ private static void ld_wrd_lst() throws IOException {
  * @throws IOException
  */
 	private static void ExperimentalGeneration() throws IOException {
-		File Dest = new File("tempFiles/Dest.txt");
+		File Dest = new File("WordList/Dest.txt");
 		PR = new PrintWriter(Dest,"UTF-8");
 		PR.write("\n");
 		gen();
@@ -80,7 +80,7 @@ private static void ld_wrd_lst() throws IOException {
 	@SuppressWarnings("resource")
 	private static void gen() throws IOException {
 		BufferedReader BR = new BufferedReader(new FileReader(new File(
-				"tempFiles/Dest.txt")));
+				"WordList/Dest.txt")));
 		
 		for(int i = 0; i < BLKLST.size(); i++)
 		{
@@ -101,7 +101,7 @@ private static void ld_wrd_lst() throws IOException {
 		{
 			duplicate_BL.add(s);
 		}
-		PrintWriter pr = new PrintWriter(new File("tempFiles/gen2.txt"));
+		PrintWriter pr = new PrintWriter(new File("WordList/gen2.txt"));
 		for(int i = 0; i < BLKLST.size();i++)
 		{
 			for(String x : duplicate_BL)

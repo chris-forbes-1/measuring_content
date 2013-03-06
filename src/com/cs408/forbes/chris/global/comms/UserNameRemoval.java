@@ -13,7 +13,7 @@ import java.util.regex.*;
  * this will also include methods for removing usernames
  *
  * ***************************After a bit of thought i realised this was an excercise in futility, as i am 
- * 	processing natural language which requires stop words to provide some kind of context to the words****
+ * 	processing natural language which requires stop words to provide some kind of context to the words
  *  as such i am going to refactor this class to soley remove the usernames
  */
 

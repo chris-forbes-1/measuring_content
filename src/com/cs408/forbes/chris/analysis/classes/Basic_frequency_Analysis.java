@@ -1,6 +1,8 @@
 package com.cs408.forbes.chris.analysis.classes;
 
 import java.io.File;
+import java.util.Map;
+import java.util.HashMap;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
+import com.cs408.forbes.chris.global.comms.KeyWordDensity;
 import com.cs408.forbes.chris.global.comms.Logfiles;
 
 /**
@@ -24,6 +27,7 @@ public class Basic_frequency_Analysis extends Analyzer {
 	private static File[] dir_lst;
 	static String fp = " ";
 	int fck_cntr = 0;
+	static Map<String, Float> keyword_per_file = new HashMap<String, Float>();
 	private static ArrayList<Analysed_words> blk_lst = new ArrayList<Analysed_words>();
 	static ArrayList<Integer> counter = new ArrayList<Integer>();
 
@@ -117,6 +121,8 @@ public class Basic_frequency_Analysis extends Analyzer {
 		System.out.println("total word count for file " + fle.getName() + " is " +fle_wrd_cnter);
 		System.out.println("KeyWord Density : "+ calculate_ratio(fle_wrd_cnter, totalBLwords) + "%");
 		pr.write(Float.toString(calculate_ratio(fle_wrd_cnter, totalBLwords)));
+		keyword_per_file.put(fle.getName(),Float.valueOf(KeyWordDensity.CalculateKeywordDensity(totalBLwords, fle_wrd_cnter)));
+		
 		pr.close();
 		
 		
@@ -177,5 +183,8 @@ public class Basic_frequency_Analysis extends Analyzer {
 		float ration = totalBLwords / totalWords;
 		ration *=100;
 		return ration;
+	}
+	public Map<String,Float> getKWDs(){
+		return keyword_per_file;
 	}
 }

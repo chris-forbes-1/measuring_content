@@ -34,5 +34,8 @@ public class Weighted_analysed_word {
 			this.weight -= 0.00F;
 		}
 	}
+	public void IncrementOccurences(){
+		this.occurences++;
+	}
 	
 }
