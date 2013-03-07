@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
+import com.cs408.forbes.chris.analysis.types.Weighted_analysed_word;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
 import com.cs408.forbes.chris.analysis.classes.Multi_word_frequency_analysis;
 import com.cs408.forbes.chris.analysis.classes.SWDLParser;
@@ -198,6 +199,23 @@ public class basicAnalysis {
 		}
 		System.out.println(":::Launching Weighted Analysis test:::");
 		Weighted_analyzer wa = new Weighted_analyzer();
+		try {
+			wa.LoadWeightList("WordList/WeightedBlackList.txt");
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		try {
+			List<Weighted_analysed_word> wawl = wa.search(new File("tempFiles/tempjackies2cool4u.txt"));
+			for(Weighted_analysed_word waa : wawl)
+			{
+				System.out.println("waa : "+ waa.getWord() + " " + waa.getOccurences() + "totalWeight" + waa.getWeight());
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println("Total Document strength = " + Float.toString(wa.getDocumentStrength()));
 		try {
 			wa.LoadWeightList("WordList/WeightedBlackList.txt");
 		} catch (IOException e) {

@@ -20,7 +20,7 @@ import java.io.BufferedReader;
  */
 public class Weighted_analyzer {
 
-		private  List<Weighted_analysed_word> WAWList;
+		private static  List<Weighted_analysed_word> WAWList;
 		float DocumentStrength = 0.0F;
 		Map<String,Float> Word_strengthMap;
 		public Weighted_analyzer(){
@@ -50,6 +50,7 @@ public class Weighted_analyzer {
 		}
 		
 		public List<Weighted_analysed_word> search(File f) throws IOException{
+			DocumentStrength = 0.0F;
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			String lne = "";
 			while ((lne = br.readLine()) != null){
@@ -69,12 +70,16 @@ public class Weighted_analyzer {
 				}
 			}
 			br.close();
-			return null;
+			return WAWList;
 		}
 		public List<Weighted_analysed_word> search(String line){
 			return null;
 		}
 		public List<Weighted_analysed_word> search(File [] fileDirectory){
 			return null;
+		}
+		
+		public float getDocumentStrength(){
+			return DocumentStrength;
 		}
 }
