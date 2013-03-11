@@ -21,14 +21,37 @@ import java.io.BufferedReader;
 public class Weighted_analyzer {
 
 		private static  List<Weighted_analysed_word> WAWList;
-		float DocumentStrength = 0.0F;
-		Map<String,Float> Word_strengthMap;
+		float DocumentStrength = 0.0F;//Current strength of the document
+		Map<String,Float> Word_strengthMap; //total wordStrength 
+		/**
+		 * Generic Constructor no detail needed sets up Weighted Analysed Word list and word_strength map
+		 */
 		public Weighted_analyzer(){
 			 WAWList = new ArrayList<Weighted_analysed_word>();
 			 Word_strengthMap = new HashMap<String,Float>();
 		}
-		
-		
+		/**
+		 * Get Word_strengthMap
+		 * @return
+		 */
+		public Map<String,Float> getWord_strengthMap()
+		{
+			return Word_strengthMap;
+		}
+		/**
+		 * Get WAWList
+		 * @return
+		 */
+		public List<Weighted_analysed_word> getWAWList()
+		{
+			return WAWList;
+		}
+		/**
+		 * Load the list at given filepath generically this is WordList/WeightedBlackList.txt
+		 * @param FilePath
+		 * @return
+		 * @throws IOException
+		 */
 		public List<Weighted_analysed_word> LoadWeightList(String FilePath) throws IOException{
 			File f = new File(FilePath);
 			BufferedReader br = new BufferedReader(new FileReader(f));
@@ -48,7 +71,12 @@ public class Weighted_analyzer {
 			return WAWList;
 			
 		}
-		
+		/**
+		 * Search the given gile against weightedAnanlysedWordList (WAWList)
+		 * @param f
+		 * @return
+		 * @throws IOException
+		 */
 		public List<Weighted_analysed_word> search(File f) throws IOException{
 			DocumentStrength = 0.0F;
 			BufferedReader br = new BufferedReader(new FileReader(f));
@@ -72,13 +100,51 @@ public class Weighted_analyzer {
 			br.close();
 			return WAWList;
 		}
+		/**
+		 * Search a specific Line against the WAWList
+		 * @param line
+		 * @return
+		 */
 		public List<Weighted_analysed_word> search(String line){
-			return null;
-		}
-		public List<Weighted_analysed_word> search(File [] fileDirectory){
-			return null;
+			String [] splitLine = line.split(" ");
+			for(String s : splitLine)
+			{
+				for(Weighted_analysed_word waw : WAWList)
+				{
+					if(waw.getWord().equalsIgnoreCase(s) && waw.getOccurences() > 0){
+						waw.IncrementOccurences();
+						DocumentStrength += waw.getWeight();
+						Word_strengthMap.put(waw.getWord(),waw.getWeight());
+						waw.Already_Occured_Decrement();
+					}else if(waw.getWord().equalsIgnoreCase(s) && waw.getOccurences() == 0){
+						waw.IncrementOccurences();
+						DocumentStrength += waw.getWeight();
+					}
+				}
+			}
+			return WAWList;
 		}
 		
+		/**
+		 * Search every file in a given directory
+		 * @param fileDirectory
+		 * @return
+		 * @throws IOException
+		 */
+		public List<List<Weighted_analysed_word>> search(File [] fileDirectory) throws IOException{
+			List<List<Weighted_analysed_word>> x = new ArrayList<List<Weighted_analysed_word>>();
+			for(File f : fileDirectory)
+			{
+				 
+				x.add(search(f));
+			}
+			return x;
+		}
+		
+		/**
+		 * Gets the document strength
+		 * @return
+		 */
 		public float getDocumentStrength(){
 			return DocumentStrength;
 		}
