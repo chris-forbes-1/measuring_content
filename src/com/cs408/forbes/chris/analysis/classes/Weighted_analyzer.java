@@ -64,9 +64,9 @@ public class Weighted_analyzer {
 					continue;
 				}
 			}
-			for(Weighted_analysed_word aww : WAWList){
-				System.out.println(aww.getWord() + Float.toString(aww.getWeight()));
-			}
+//			for(Weighted_analysed_word aww : WAWList){
+//				System.out.println(aww.getWord() + Float.toString(aww.getWeight()));
+//			}
 			br.close();
 			return WAWList;
 			

@@ -93,10 +93,10 @@ public class Multi_word_frequency_analysis extends Analyzer {
 		for (String s : x) {
 			wc++;
 		}
-		System.out.println("MWBasic " + lne);
+		//System.out.println("MWBasic " + lne);
 		bl_src(x);
 		try {
-			System.out.println("MWNG "+ lne);
+		//	System.out.println("MWNG "+ lne);
 			ngramSearch(lne);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

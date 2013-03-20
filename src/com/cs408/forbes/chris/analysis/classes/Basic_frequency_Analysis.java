@@ -1,5 +1,6 @@
 package com.cs408.forbes.chris.analysis.classes;
 
+
 import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class Basic_frequency_Analysis extends Analyzer {
 	static Map<String, Float> keyword_per_file = new HashMap<String, Float>();
 	private static ArrayList<Analysed_words> blk_lst = new ArrayList<Analysed_words>();
 	static ArrayList<Integer> counter = new ArrayList<Integer>();
-
+	
 	public Basic_frequency_Analysis(String fl_dir)
 			throws IOException {
 		fp = fl_dir;

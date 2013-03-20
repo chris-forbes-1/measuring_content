@@ -1,6 +1,7 @@
 package com.cs408.forbes.chris.application.tests;
 
 import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,6 +13,7 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
+import com.cs408.forbes.chris.analysis.types.KeyWord_file;
 import com.cs408.forbes.chris.analysis.types.Weighted_analysed_word;
 import com.cs408.forbes.chris.analysis.classes.Basic_frequency_Analysis;
 import com.cs408.forbes.chris.analysis.classes.Multi_word_frequency_analysis;
@@ -96,6 +98,7 @@ public class basicAnalysis {
 		Basic_frequency_Analysis bfa = new Basic_frequency_Analysis();
 		try {
 			wordList = bfa.analyse();
+			//Charted_KWD.Charted_KWD(wordList, "BFA test", "all");
 //			for (Analysed_words AL : wordList) {
 //				System.out.println(AL.getWord_() + " " + AL.getCounted_());
 //			}
@@ -161,6 +164,7 @@ public class basicAnalysis {
 
 		// TearDown.tearDown();
 		System.out.println(":::Performing BFA on LEM:::");
+		List<KeyWord_file> KWDList = new ArrayList<KeyWord_file>();
 		try {
 			bfa = new Basic_frequency_Analysis("lem/");
 			bfa.analyse();
@@ -170,7 +174,7 @@ public class basicAnalysis {
 				
 				Map.Entry<String, Float> pairs = (Map.Entry<String, Float>)IT.next();
 				System.out.println("File: " + pairs.getKey() + " "+ "KWD: " + pairs.getValue());
-				
+				KWDList.add(new KeyWord_file(pairs.getKey(), KeyWord_file.SearchType.BASIC_FREQUENCY_ANALYISIS, pairs.getValue()));
 			}
 		} catch (IOException IOE) {
 			IOE.printStackTrace();
@@ -205,16 +209,16 @@ public class basicAnalysis {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		try {
-			List<Weighted_analysed_word> wawl = wa.search(new File("tempFiles/tempjackies2cool4u.txt"));
-			for(Weighted_analysed_word waa : wawl)
-			{
-				System.out.println("waa : "+ waa.getWord() + " " + waa.getOccurences() + "totalWeight" + waa.getWeight());
-			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			List<Weighted_analysed_word> wawl = wa.search(new File("tempFiles/tempjackies2cool4u.txt"));
+//			for(Weighted_analysed_word waa : wawl)
+//			{
+//				System.out.println("waa : "+ waa.getWord() + " " + waa.getOccurences() + "totalWeight" + waa.getWeight());
+//			}
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		System.out.println("Total Document strength = " + Float.toString(wa.getDocumentStrength()));
 		try {
 			wa.LoadWeightList("WordList/WeightedBlackList.txt");
