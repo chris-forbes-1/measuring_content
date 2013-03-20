@@ -21,11 +21,11 @@ public class KeyWord_file {
 		}
 	}
 	public KeyWord_file(String FILENAME, SearchType search, float KeyWordDensity){
-		this.fileName = FILENAME; this.Search = search.toString();this.Keyword_density = KeyWordDensity;
+		this.fileName = FILENAME; this.Search = search;this.Keyword_density = KeyWordDensity;
 	}
 	private String fileName = "";
 	private float Keyword_density;
-	private String Search = KeyWord_file.SearchType.BASIC_FREQUENCY_ANALYISIS.toString();
+	private SearchType Search = KeyWord_file.SearchType.BASIC_FREQUENCY_ANALYISIS;
 	public String getFileName() {
 		return fileName;
 	}
@@ -38,10 +38,10 @@ public class KeyWord_file {
 	public void setKeyword_density(float keyword_density) {
 		Keyword_density = keyword_density;
 	}
-	public String getSearch() {
+	public SearchType getSearch() {
 		return Search;
 	}
-	public void setSearch(String search) {
+	public void setSearch(SearchType search) {
 		Search = search;
 	}
 	

@@ -12,6 +12,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.ArrayList;
+
+import org.jfree.ui.RefineryUtilities;
+
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.analysis.types.KeyWord_file;
 import com.cs408.forbes.chris.analysis.types.Weighted_analysed_word;
@@ -22,6 +25,7 @@ import com.cs408.forbes.chris.analysis.classes.SWDL_Lemmatization;
 import com.cs408.forbes.chris.analysis.classes.Weighted_analyzer;
 import com.cs408.forbes.chris.analysis.interfaces.SWDL;
 import com.cs408.forbes.chris.global.comms.Analysis_control;
+import com.cs408.forbes.chris.global.comms.Grapher;
 import com.cs408.forbes.chris.global.comms.KeyWordDensity;
 import com.cs408.forbes.chris.global.comms.Logfiles;
 import com.cs408.forbes.chris.global.comms.NgramGenerator;
@@ -176,6 +180,11 @@ public class basicAnalysis {
 				System.out.println("File: " + pairs.getKey() + " "+ "KWD: " + pairs.getValue());
 				KWDList.add(new KeyWord_file(pairs.getKey(), KeyWord_file.SearchType.BASIC_FREQUENCY_ANALYISIS, pairs.getValue()));
 			}
+			Grapher g = new Grapher(KWDList);
+			g.pack();
+			RefineryUtilities.centerFrameOnScreen(g);
+			g.setVisible(true);
+			
 		} catch (IOException IOE) {
 			IOE.printStackTrace();
 		}

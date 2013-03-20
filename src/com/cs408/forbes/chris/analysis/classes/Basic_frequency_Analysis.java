@@ -105,10 +105,12 @@ public class Basic_frequency_Analysis extends Analyzer {
 			while ((lne = buf_rdr.readLine()) != null) {
 
 				String[] words = lne.split(" ");
+				//System.out.println(lne);
 				for (String s : words) {
 					if (s != " ") {
 						fle_wrd_cnter++;
-						
+						//TODO GET RID OF THIS
+						//System.out.println(s);
 						totalBLwords+=srch_wrd(s);
 					}
 				}
