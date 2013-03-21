@@ -95,7 +95,7 @@ public class basicAnalysis {
 			;
 		}
 
-		System.out.println("Starting Single word Term search...\n\n");
+		System.out.println("Starting Single word Term search...\nD: 0.0\n");
 
 		System.out.println("Beginning Analysis:");
 		ArrayList<Analysed_words> wordList = new ArrayList<Analysed_words>();
@@ -169,6 +169,7 @@ public class basicAnalysis {
 		// TearDown.tearDown();
 		System.out.println(":::Performing BFA on LEM:::");
 		List<KeyWord_file> KWDList = new ArrayList<KeyWord_file>();
+		List<KeyWord_file> KWDD = new ArrayList<KeyWord_file>();
 		try {
 			bfa = new Basic_frequency_Analysis("lem/");
 			bfa.analyse();
@@ -180,10 +181,7 @@ public class basicAnalysis {
 				System.out.println("File: " + pairs.getKey() + " "+ "KWD: " + pairs.getValue());
 				KWDList.add(new KeyWord_file(pairs.getKey(), KeyWord_file.SearchType.BASIC_FREQUENCY_ANALYISIS, pairs.getValue()));
 			}
-			Grapher g = new Grapher(KWDList);
-			g.pack();
-			RefineryUtilities.centerFrameOnScreen(g);
-			g.setVisible(true);
+			
 			
 		} catch (IOException IOE) {
 			IOE.printStackTrace();
@@ -198,7 +196,13 @@ public class basicAnalysis {
 //			for(Analysed_words AW : combinedLists){
 //				System.out.println("Word : "+ AW.getWord_() + " Total count : " + AW.getCounted_());
 //			}
+			KWDD = mwfa.getFleList();
 			Logfiles.createLogs(combinedLists);
+			Grapher ll = new Grapher(mwfa.getFleList(),KWDList);
+			ll.pack();
+			RefineryUtilities.centerFrameOnScreen(ll);
+			ll.setVisible(true);
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -228,6 +232,7 @@ public class basicAnalysis {
 //			// TODO Auto-generated catch block
 //			e1.printStackTrace();
 //		}
+		
 		System.out.println("Total Document strength = " + Float.toString(wa.getDocumentStrength()));
 		try {
 			wa.LoadWeightList("WordList/WeightedBlackList.txt");

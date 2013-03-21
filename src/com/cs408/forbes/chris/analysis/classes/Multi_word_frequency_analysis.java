@@ -8,8 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import com.cs408.forbes.chris.analysis.types.Analysed_words;
+import com.cs408.forbes.chris.global.comms.KeyWordDensity;
 import com.cs408.forbes.chris.global.comms.Logfiles;
-
+import com.cs408.forbes.chris.analysis.types.KeyWord_file;
 import java.io.BufferedReader;
 
 /**
@@ -24,6 +25,7 @@ public class Multi_word_frequency_analysis extends Analyzer {
 	private static ArrayList<Analysed_words> bl_words = new ArrayList<Analysed_words>();
 	private static String fp = " ";
 	private static ArrayList<Integer> fle_wrd_count = new ArrayList<Integer>();
+	private static List<KeyWord_file> FleLsts = new ArrayList<KeyWord_file>();
 	private static List<String> NGram = new ArrayList<String>();
 
 	/**
@@ -67,13 +69,14 @@ public class Multi_word_frequency_analysis extends Analyzer {
 	 * Iterates over the given file directory
 	 * 
 	 * @param fle_dir
+	 * @return 
 	 */
-	private static void prse_dir(String fle_dir) throws IOException {
+	private static List<KeyWord_file> prse_dir(String fle_dir) throws IOException {
 		File[] fls = new File(fle_dir).listFiles();
 		for (File f : fls) {
 			prse_fle(f);
 		}
-
+		return FleLsts;
 	}
 
 	private static void prse_fle(File fle) throws IOException {
@@ -82,12 +85,24 @@ public class Multi_word_frequency_analysis extends Analyzer {
 		int flewc = 0;
 		while ((lne = br.readLine()) != null) {
 			flewc += splt_lne(lne);
+
 		}
+
+		float blWT = 0.0f;
+		for(Analysed_words x : bl_words)
+		{
+			if(x.getCounted_()>0)
+			{
+				blWT += 1.0F;
+			}
+		}
+		float KWD = KeyWordDensity.CalculateKeywordDensity(blWT, flewc);
+		FleLsts.add(new KeyWord_file(fle.getName(), KeyWord_file.SearchType.MULTI_WORD_FREQUENCY_ANALYSIS ,KWD));
 		br.close();
 
 	}
 
-	private static int splt_lne(String lne) {
+	private static int splt_lne(String lne) throws IOException {
 		String[] x = lne.split("\\s+");
 		int wc = 0;
 		for (String s : x) {
@@ -102,6 +117,7 @@ public class Multi_word_frequency_analysis extends Analyzer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return wc;
 	}
 
@@ -111,10 +127,11 @@ public class Multi_word_frequency_analysis extends Analyzer {
 		return KeyWordDensity;
 	}
 
-	private static void bl_src(String[] lne_sp) {
+	private static void bl_src(String[] lne_sp) throws IOException {
 		// test data : rough you up
 		// passed data: rough you up
 		// compare each string at each position for a match
+		ld_wrd_lst(); // reload
 		for (int i = 0; i < bl_words.size(); i++) {
 			for (int x = 0; x < lne_sp.length; x++) {
 				String z = bl_words.get(i).getWord_();
@@ -140,6 +157,10 @@ public class Multi_word_frequency_analysis extends Analyzer {
 			}
 		}
 		br.close();
+	}
+	
+	public List<KeyWord_file> getFleList(){
+		return FleLsts;
 	}
 
 }

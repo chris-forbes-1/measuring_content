@@ -40,6 +40,17 @@ public class Grapher extends ApplicationFrame {
 		setContentPane(chartpanel);
 		
 	}
+	public Grapher(List<KeyWord_file> x , List<KeyWord_file> y)
+	{
+		super("Search Divisions on document key word density");
+		DrawGraph(x);
+		DrawGraph(y);
+		CategoryDataset dataset = createDataset();
+		ChartPanel chartpanel = new ChartPanel(createChart(dataset));
+		chartpanel.setPreferredSize(new Dimension(500,270));
+		setContentPane(chartpanel);
+		
+	}
 
 	private static CategoryDataset createDataset(){
 		DefaultCategoryDataset DcD = new DefaultCategoryDataset();
@@ -47,7 +58,7 @@ public class Grapher extends ApplicationFrame {
 		{
 			DcD.addValue(kWf.getKeyword_density(),kWf.getSearch().toString(), kWf.getFileName());
 		}
-		return null;
+		return DcD;
 	}
 	public static void DrawGraph(List<KeyWord_file> x) {
 		for (KeyWord_file KWF : x) {

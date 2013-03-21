@@ -47,7 +47,7 @@ public class UserNameRemoval{
 	
 		private static void generate_tempFiles(File f)
 		{
-			String fle_nme = "tempFiles/temp"+f.getName();
+			String fle_nme = "tempFiles/UserNameRemoved_"+f.getName();
 			File tmp_fle = new File(fle_nme);
 			try {
 				tmp_fle.createNewFile();
