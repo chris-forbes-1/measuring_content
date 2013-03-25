@@ -183,6 +183,7 @@ public class basicAnalysis {
 			}
 			
 			
+			
 		} catch (IOException IOE) {
 			IOE.printStackTrace();
 		}
@@ -197,11 +198,22 @@ public class basicAnalysis {
 //				System.out.println("Word : "+ AW.getWord_() + " Total count : " + AW.getCounted_());
 //			}
 			KWDD = mwfa.getFleList();
+			System.out.println("**********************************************************");
+			System.out.println("************MULTIWORD*************************************");
+			for(KeyWord_file AD : KWDD){
+				System.out.println(AD.getFileName() + AD.getKeyword_density() );
+			}
 			Logfiles.createLogs(combinedLists);
-			Grapher ll = new Grapher(mwfa.getFleList(),KWDList);
-			ll.pack();
-			RefineryUtilities.centerFrameOnScreen(ll);
-			ll.setVisible(true);
+			Grapher G = new Grapher(KWDList);
+			G.pack();RefineryUtilities.centerFrameOnScreen(G);G.setVisible(true);
+			Grapher GL = new Grapher(KWDD);
+			GL.pack();
+			RefineryUtilities.centerFrameOnScreen(GL);
+			GL.setVisible(true);
+//			Grapher ll = new Grapher(mwfa.getFleList(),KWDList);
+//			ll.pack();
+//			RefineryUtilities.centerFrameOnScreen(ll);
+//			ll.setVisible(true);
 			
 			
 		} catch (IOException e) {

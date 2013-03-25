@@ -96,7 +96,7 @@ public class Multi_word_frequency_analysis extends Analyzer {
 				blWT += 1.0F;
 			}
 		}
-		float KWD = KeyWordDensity.CalculateKeywordDensity(blWT, flewc);
+		float KWD = calculate_ratio(flewc, blWT);
 		FleLsts.add(new KeyWord_file(fle.getName(), KeyWord_file.SearchType.MULTI_WORD_FREQUENCY_ANALYSIS ,KWD));
 		br.close();
 
