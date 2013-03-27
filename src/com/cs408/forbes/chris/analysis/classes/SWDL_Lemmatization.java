@@ -1,7 +1,6 @@
 package com.cs408.forbes.chris.analysis.classes;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -9,20 +8,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.io.IOException;
 
-import sun.util.logging.PlatformLogger;
+
+
 
 import com.cs408.forbes.chris.analysis.interfaces.SWDL;
-@SuppressWarnings("unused")
+
 /**
- * @desc Used to perform Lemmatization a method not unlike the process of stemming in information retrival
+ *  Used to perform Lemmatization a method not unlike the process of stemming in information retrival
  * lemmatization has the benefits of stemming (removing duplicate words etc.) with the additional 
  * bonus of access to a thesaurus or in the case of STELA SWDL files, see the exemplar file lem_wrd.swdl
  * for details on the format of an SWDL file.
  * @author cforbes2013 <christopher.forbes@strath.ac.uk> 
  *
  */
+
+
 public class SWDL_Lemmatization implements SWDL {
 	protected Map<String, List<String>> SWDL_FILE_DATA = new HashMap<String,List<String>>(); 
 	public SWDL_Lemmatization() {
@@ -47,7 +48,7 @@ public class SWDL_Lemmatization implements SWDL {
 
 	@Override
 	/**
-	 * @desc This method searches the given line with the SWDL file loaded into memory
+	 * This method searches the given line with the SWDL file loaded into memory
 	 * it will modify the line neutralising the language by replacing the noun/verb
 	 * with it's associated word see exemplar SWDL file 'lem_wrd.swdl' this will be extended to 
 	 * operate of the files instead
@@ -59,7 +60,6 @@ public class SWDL_Lemmatization implements SWDL {
 		if(SWDL_FILE_DATA == null){
 			throw new NullPointerException("Search NPE");
 		}
-		boolean repacelement_takenPlace = false;		
 		Iterator <Entry<String, List<String>>> MapIterator = SWDL_FILE_DATA.entrySet().iterator();
 		while(MapIterator.hasNext()){
 			Map.Entry<String,List<String>> pairs = (Map.Entry<String, List<String>>)MapIterator.next();
@@ -102,8 +102,11 @@ public class SWDL_Lemmatization implements SWDL {
 	}
 	@Override
 	/**
-	 * :::IN PROGRESS:::
-	 * Simply writes the lemitized data back to a tempFile/tmp followed by the existing temp filename
+	 * This method writes out the values generated from the lematized files and marks them with "tmp" to signify
+	 * they are lemmatization data
+	 * @param List<String> LineList the lemmatization data
+	 * @param Filename used to mark the file as tmp
+	 * @return true/false if the write words correctly it returns true
 	 */
 	public boolean writeLemitizedFile(List<String> LineList,String Filename) throws IOException{
 		PrintWriter pr = new PrintWriter(new File("lem/" + "tmp" + Filename));

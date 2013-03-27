@@ -11,7 +11,7 @@ import java.io.File;
 public class TearDown {
 
 	/**
-	 * 
+	 * Read everything in the tempFiles directory and delete it.
 	 */
 	public static void tearDown() {
 		File f = new File("tempFiles/");

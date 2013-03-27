@@ -92,8 +92,8 @@ public class SWDLParser {
 		return SWDLDatas;
 	}
 /**
- * Getter Should be called after parse
- * @return
+ * Getter Should be called after parser
+ * @return Map<String, List<String>> returns all SWDL parsed from the file
  * @throws NullPointerException
  */
 	public Map<String,List<String>> getSWDLData() throws NullPointerException {

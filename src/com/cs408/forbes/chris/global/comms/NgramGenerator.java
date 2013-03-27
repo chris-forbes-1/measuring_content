@@ -31,8 +31,8 @@ public class NgramGenerator {
 	/**
 	 * Pass the File Path For the blacklist 
 	 * 
-	 * @param fp
-	 * @return
+	 * @param fp the file path of the blacklist
+	 * @return true if everything has worked correctly
 	 * @throws IOException
 	 */
 	public static boolean generateNgrams(String fp) throws IOException {
@@ -77,7 +77,7 @@ private static void ld_wrd_lst() throws IOException {
 	 * then removes the [0]'th element from the list then merges the list with the original and writes it.
 	 * @throws IOException
 	 */
-	@SuppressWarnings("resource")
+	
 	private static void gen() throws IOException {
 		BufferedReader BR = new BufferedReader(new FileReader(new File(
 				"WordList/Dest.txt")));
@@ -95,6 +95,10 @@ private static void ld_wrd_lst() throws IOException {
 		
 	}
 	
+	/**
+	 * A slightly more efficient method of generation of ngrams
+	 * @throws IOException
+	 */
 	private static void gen_2() throws IOException{
 		ArrayList<String> duplicate_BL = new ArrayList<String>();
 		for(String s:BLKLST)

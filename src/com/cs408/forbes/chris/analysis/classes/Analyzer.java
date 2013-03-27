@@ -13,6 +13,7 @@ import com.cs408.forbes.chris.global.comms.Logfiles;
 /**
  * Analyzer class implementing the Textual_Analysis interface,
  * namely just a simple counter algorithm 
+ * 
  * @author cforbes2013 <christopher.forbes@strath.ac.uk>
  *
  */
@@ -21,10 +22,15 @@ public abstract class Analyzer implements Textual_Analysis{
 
 	private static File[] dir_lst;
 	static String fp = " ";
-	int fck_cntr = 0;
+	int test_counter = 0;
 	private static ArrayList<Analysed_words> blk_lst = new ArrayList<Analysed_words>();
 	static ArrayList<Integer> counter = new ArrayList<Integer>();
 
+	/**
+	 * Analyser constructor 
+	 * @param fl_dir custom directory for files
+	 * @throws IOException on empty directory
+	 */
 	public Analyzer(String fl_dir)
 			throws IOException {
 		fp = fl_dir;
@@ -33,6 +39,11 @@ public abstract class Analyzer implements Textual_Analysis{
 		super();
 		fp = "tempFiles/";
 	}
+	/**
+	 * Generic analyze (basic work analysis)This method should be overridden during each implementation
+	 * @return ArrayList<Analysed_words> The list of analysed words from BFA
+	 * @throws IOException
+	 */
 	public ArrayList<Analysed_words> analyse () throws IOException{
 		System.out.println("Beginning Basic_frequency analysis \n please wait...");
 		System.out.println("Loading blacklist");
@@ -117,8 +128,8 @@ public abstract class Analyzer implements Textual_Analysis{
 	 * the passed word to the word word parameter if it finds the word in the
 	 * black list it will add it to the list as an analysed_word type
 	 * 
-	 * @param word
-	 * @return 
+	 * 
+	 * @return returns the loaded blacklist of analysed words
 	 * @throws IOException
 	 */
 	protected static ArrayList<Analysed_words> ld_wrd_lst() throws IOException {

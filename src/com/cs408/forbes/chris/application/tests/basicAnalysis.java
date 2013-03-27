@@ -54,12 +54,16 @@ public class basicAnalysis {
 		DisplayLogo();
 		System.out
 				.println("\n Do you want to use the default dataset??\n (y/n)");
-		String param = sc.next();
+		String params = sc.next();
+		int param= 0;
+		if(params.equals("y")){
+			param = 1;
+		}
 		switch (param) {
-		case "y":
+		case 1:
 			DefaultRemoval();
 			break;
-		case "n":
+		case 0:
 			System.out.println("please enter your folder path/\n:");
 			try {
 				UserNameRemoval.rmv_usr_nme(new File(sc.next()));
@@ -71,10 +75,13 @@ public class basicAnalysis {
 		}
 		System.out
 				.println("Do you want to generate Ngrams of the dataset? \n (y/n)");
-
-		param = sc.next();
+param = 0;
+		params = sc.next();
+		if(params.equals("y")){
+			param = 1;
+		}
 		switch (param) {
-		case "y":
+		case 1:
 			try {
 				NgramGenerator.generateNgrams("WordList/wordlist.txt");
 			} catch (IOException e) {
@@ -88,7 +95,7 @@ public class basicAnalysis {
 		// */
 		// f = null;
 		// System.gc();
-		case "n":
+		case 0:
 			;
 			break;
 		default:
@@ -229,11 +236,34 @@ public class basicAnalysis {
 		System.out.println(":::Launching Weighted Analysis test:::");
 		Weighted_analyzer wa = new Weighted_analyzer();
 		try {
-			wa.LoadWeightList("WordList/WeightedBlackList.txt");
+			
+			File[] UNR_ = new File("tempFiles/").listFiles();
+			for(File file : UNR_)
+			{
+				wa = new Weighted_analyzer();
+				wa.LoadWeightList("WordList/WeightedBlackList.txt");
+				wa.search(file);
+				System.out.println(file.getName() + " " + wa.getDocumentStrength() );
+			}
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
+		
+		Weighted_analyzer waa = new Weighted_analyzer();
+		try {
+			
+			File[] UNR_ = new File("lem/").listFiles();
+			for(File file : UNR_)
+			{
+				wa = new Weighted_analyzer();
+				wa.LoadWeightList("WordList/WeightedBlackList.txt");
+				wa.search(file);
+				System.out.println("Lematize "+file.getName() + " " + wa.getDocumentStrength() );
+			}
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();}
 //		try {
 //			List<Weighted_analysed_word> wawl = wa.search(new File("tempFiles/tempjackies2cool4u.txt"));
 //			for(Weighted_analysed_word waa : wawl)
@@ -248,6 +278,7 @@ public class basicAnalysis {
 		System.out.println("Total Document strength = " + Float.toString(wa.getDocumentStrength()));
 		try {
 			wa.LoadWeightList("WordList/WeightedBlackList.txt");
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

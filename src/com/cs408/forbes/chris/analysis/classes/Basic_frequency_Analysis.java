@@ -138,8 +138,7 @@ public class Basic_frequency_Analysis extends Analyzer {
 	 * the passed word to the word word parameter if it finds the word in the
 	 * black list it will add it to the list as an analysed_word type
 	 * 
-	 * @param word
-	 * @return 
+	 * @return ArrayList<Analysed_words> the blacklist of loaded analysed_words 
 	 * @throws IOException
 	 */
 	protected static ArrayList<Analysed_words> ld_wrd_lst() throws IOException {

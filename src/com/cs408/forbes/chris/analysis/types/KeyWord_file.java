@@ -1,5 +1,11 @@
 package com.cs408.forbes.chris.analysis.types;
 
+/**
+ * The keyword_file type was created as a method of encapsulating the data required for graphing the data
+ * 
+ * @author Christopher Forbes 2013 <christopher.forbes@strath.ac.uk>
+ *
+ */
 public class KeyWord_file {
 	public enum SearchType{
 		/**
@@ -20,27 +26,58 @@ public class KeyWord_file {
 			return searchtype;
 		}
 	}
+	/**
+	 * Generic constructor method
+	 * @param FILENAME filename of the file that has been analysed
+	 * @param search the search type used (searchtype enum declared above)
+	 * @param KeyWordDensity What this entire application is about
+	 */
 	public KeyWord_file(String FILENAME, SearchType search, float KeyWordDensity){
 		this.fileName = FILENAME; this.Search = search;this.Keyword_density = KeyWordDensity;
 	}
 	private String fileName = "";
 	private float Keyword_density;
 	private SearchType Search = KeyWord_file.SearchType.BASIC_FREQUENCY_ANALYISIS;
+	
+	/**
+	 * 
+	 * @return filename generic getter
+	 */
 	public String getFileName() {
 		return fileName;
 	}
+	/**
+	 * 
+	 * @param fileName generic setter method 
+	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	/**
+	 * 
+	 * @return keyword_density generic getter method
+	 */
 	public float getKeyword_density() {
 		return Keyword_density;
 	}
+	/**
+	 * 
+	 * @param keyword_density generic setter method 
+	 */
 	public void setKeyword_density(float keyword_density) {
 		Keyword_density = keyword_density;
 	}
+	/**
+	 * 
+	 * @return search type generic getter
+	 */
 	public SearchType getSearch() {
 		return Search;
 	}
+	/**
+	 * 
+	 * @param search generic setter
+	 */
 	public void setSearch(SearchType search) {
 		Search = search;
 	}

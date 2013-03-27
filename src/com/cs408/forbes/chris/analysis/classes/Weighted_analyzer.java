@@ -6,11 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import com.cs408.forbes.chris.analysis.types.Analysed_words;
 import com.cs408.forbes.chris.analysis.types.Weighted_analysed_word;
 import java.io.BufferedReader;
 
-@SuppressWarnings("unused")
+
 /**
  * This class follows the principles donated in the @see Basic_frequency_Analysis class as it focusing on single words
  * however in a different manner it will focus on adding weights to the words in order to acheive the goal of a more balanced 
@@ -18,6 +17,7 @@ import java.io.BufferedReader;
  * @author cforbes2013 <christopher.forbes@strath.ac.uk>
  *
  */
+
 public class Weighted_analyzer {
 
 		private static  List<Weighted_analysed_word> WAWList;
@@ -32,7 +32,7 @@ public class Weighted_analyzer {
 		}
 		/**
 		 * Get Word_strengthMap
-		 * @return
+		 * @return Map<String,Float> 
 		 */
 		public Map<String,Float> getWord_strengthMap()
 		{
@@ -40,7 +40,7 @@ public class Weighted_analyzer {
 		}
 		/**
 		 * Get WAWList
-		 * @return
+		 * @return WAWList 
 		 */
 		public List<Weighted_analysed_word> getWAWList()
 		{
@@ -49,7 +49,7 @@ public class Weighted_analyzer {
 		/**
 		 * Load the list at given filepath generically this is WordList/WeightedBlackList.txt
 		 * @param FilePath
-		 * @return
+		 * @return Weightlist Loaded data from the weighted blacklist file
 		 * @throws IOException
 		 */
 		public List<Weighted_analysed_word> LoadWeightList(String FilePath) throws IOException{
@@ -74,7 +74,7 @@ public class Weighted_analyzer {
 		/**
 		 * Search the given gile against weightedAnanlysedWordList (WAWList)
 		 * @param f
-		 * @return
+		 * @return List<Weighted_analysed_word> List of weighted words and their frequency
 		 * @throws IOException
 		 */
 		public List<Weighted_analysed_word> search(File f) throws IOException{
@@ -103,7 +103,7 @@ public class Weighted_analyzer {
 		/**
 		 * Search a specific Line against the WAWList
 		 * @param line
-		 * @return
+		 * @return Weighted analysed word list
 		 */
 		public List<Weighted_analysed_word> search(String line){
 			String [] splitLine = line.split(" ");
@@ -128,7 +128,7 @@ public class Weighted_analyzer {
 		/**
 		 * Search every file in a given directory
 		 * @param fileDirectory
-		 * @return
+		 * @return List<Analysed_weighted_word> The weighted wordlist including word frequency
 		 * @throws IOException
 		 */
 		public List<List<Weighted_analysed_word>> search(File [] fileDirectory) throws IOException{
@@ -143,7 +143,7 @@ public class Weighted_analyzer {
 		
 		/**
 		 * Gets the document strength
-		 * @return
+		 * @return float Document strength
 		 */
 		public float getDocumentStrength(){
 			return DocumentStrength;

@@ -14,7 +14,7 @@ public class Analysis_control {
 	 * Static class pass 2 Arraylists with contents Analysed_words and it will combine them
 	 * @param Multi_word
 	 * @param single_word
-	 * @return
+	 * @return ArrayList<Analysed_words> The combined list
 	 */
 		public static ArrayList<Analysed_words> Combine_lists(ArrayList<Analysed_words> Multi_word, ArrayList<Analysed_words> single_word)
 		{

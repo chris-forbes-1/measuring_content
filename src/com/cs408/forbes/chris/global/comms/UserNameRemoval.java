@@ -24,8 +24,8 @@ public class UserNameRemoval{
 	/**
 	 * Global function for the removal of usernames from the chatlogs
 	 * all files will then be written to the folder tempFiles/ for further analysis
-	 * @param @see File
-	 * @return 
+	 * @param f the file you wish to remove the usernames from
+	 * 
 	 */
 	
 	public static void rmv_usr_nme(File f) throws IOException
@@ -45,6 +45,10 @@ public class UserNameRemoval{
 		generate_tempFiles(f);
 		}
 	
+	/**
+	 * Writes the file with the username removed
+	 * @param f file with the usernames removed
+	 */
 		private static void generate_tempFiles(File f)
 		{
 			String fle_nme = "tempFiles/UserNameRemoved_"+f.getName();
