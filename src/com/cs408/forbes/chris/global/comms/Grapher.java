@@ -31,7 +31,7 @@ public class Grapher extends ApplicationFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static List<KeyWord_file> KWDList = new ArrayList<KeyWord_file>();
-	private static CategoryDataset dataset;
+	private  CategoryDataset dataset;
 	/**
 	 * Generic constructor for the Grapher class takes one list of KeyWord_file and generates the dataset 
 	 * from this

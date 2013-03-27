@@ -35,7 +35,7 @@ import com.cs408.forbes.chris.global.comms.TearDown;
 @SuppressWarnings("unused")
 public class basicAnalysis {
 	private static Scanner sc;
-
+	private static Grapher G;
 	/**
 	 * @param args
 	 */
@@ -211,7 +211,9 @@ param = 0;
 				System.out.println(AD.getFileName() + AD.getKeyword_density() );
 			}
 			Logfiles.createLogs(combinedLists);
-			Grapher G = new Grapher(KWDList);
+			G = new Grapher(KWDList);
+			//G.AddToData(KWDD);
+			
 			G.pack();RefineryUtilities.centerFrameOnScreen(G);G.setVisible(true);
 			Grapher GL = new Grapher(KWDD);
 			GL.pack();
@@ -236,7 +238,8 @@ param = 0;
 		System.out.println(":::Launching Weighted Analysis test:::");
 		Weighted_analyzer wa = new Weighted_analyzer();
 		try {
-			
+			 
+			List<KeyWord_file> KW_W = new ArrayList<KeyWord_file>();
 			File[] UNR_ = new File("tempFiles/").listFiles();
 			for(File file : UNR_)
 			{
@@ -244,7 +247,15 @@ param = 0;
 				wa.LoadWeightList("WordList/WeightedBlackList.txt");
 				wa.search(file);
 				System.out.println(file.getName() + " " + wa.getDocumentStrength() );
+				KW_W.add(new KeyWord_file(file.getName(),KeyWord_file.SearchType.WEIGHTED_ANALYSIS,wa.getDocumentStrength()));
 			}
+			Grapher KW_WG = new Grapher(KW_W);
+			KW_WG.pack();
+			RefineryUtilities.centerFrameOnScreen(KW_WG);
+			KW_WG.setVisible(true);
+			
+			
+			
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
@@ -252,7 +263,7 @@ param = 0;
 		
 		Weighted_analyzer waa = new Weighted_analyzer();
 		try {
-			
+			List<KeyWord_file> KW_W = new ArrayList<KeyWord_file>();
 			File[] UNR_ = new File("lem/").listFiles();
 			for(File file : UNR_)
 			{
@@ -260,7 +271,10 @@ param = 0;
 				wa.LoadWeightList("WordList/WeightedBlackList.txt");
 				wa.search(file);
 				System.out.println("Lematize "+file.getName() + " " + wa.getDocumentStrength() );
+				KW_W.add(new KeyWord_file(file.getName(),KeyWord_file.SearchType.WEIGHTED_ANALYSIS,wa.getDocumentStrength()));
 			}
+			
+			
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();}
@@ -275,15 +289,8 @@ param = 0;
 //			e1.printStackTrace();
 //		}
 		
-		System.out.println("Total Document strength = " + Float.toString(wa.getDocumentStrength()));
-		try {
-			wa.LoadWeightList("WordList/WeightedBlackList.txt");
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//TearDown.tearDown();
+	
+		
 	}
 
 	private static void DefaultRemoval() {
